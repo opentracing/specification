@@ -79,7 +79,7 @@ The `Tracer` interface creates `Span`s and understands how to `Inject`
 (serialize) and `Extract` (deserialize) them across process boundaries.
 Formally, it has the following capabilities:
 
-#### Starting a new `Span`
+#### Start a new `Span`
 
 Required parameters
     - An **operation name**, a human-readable string which
@@ -98,14 +98,14 @@ Optional parameters
 
 **Returns** a `Span` instance that's already started (but not `Finish`ed)
 
-#### Injecting a `SpanContext` into a carrier
+#### Inject a `SpanContext` into a carrier
 
 Required parameters
     - A **`SpanContext`** instance
     - A **format** descriptor (typically but not necessarily a string constant) which tells the `Tracer` implementation how to encode the `SpanContext` in the carrier parameter
     - A **carrier**, whose type is dictated by the **format**. The `Tracer` implementation will encode the `SpanContext` in this carrier object according to the **format**.
 
-#### Extracting a `SpanContext` from a carrier
+#### Extract a `SpanContext` from a carrier
 
 Required parameters
     - A **format** descriptor (typically but not necessarily a string constant) which tells the `Tracer` implementation how to decode `SpanContext` from the carrier parameter
@@ -124,18 +124,18 @@ Both injection and extraction rely on an extensible **format** parameter that di
 
 With the exception of the method to retrieve the `Span`'s `SpanContext`, none of the below may be called after the `Span` is finished.
 
-#### Retrieving the `Span`s `SpanContext`
+#### Retrieve the `Span`s `SpanContext`
 
 There should be no parameters.
 
 **Returns** the `SpanContext` for the given `Span`
 
-#### Overwriting the operation name
+#### Overwrite the operation name
 
 Required parameters
     - The new **operation name**, which supersedes whatever was passed in when the `Span` was started
 
-#### Setting `Span` tags
+#### Set `Span` tags
 
 Required parameters
     - The tag key, which must be a string
