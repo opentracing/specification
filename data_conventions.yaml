@@ -1,0 +1,89 @@
+# This file describes standards and conventions for Span tags and log fields.
+#
+# OpenTracing APIs can parse this file programmatically to generate
+# documentation (and comments) as they see fit.
+#
+# Changes to this file affect the OpenTracing specification version. Additions
+# should always bump the minor version, and backwards-incompatible changes (or
+# perhaps very large additions) should bump the major version.
+
+standard_tags:
+
+    #####################################################################
+    # General tags
+    #####################################################################
+
+    'error':
+        type: bool
+        comment: '"true" if and only if the associated Span is in an error state'
+
+    'component':
+        type: string
+        comment: 'The software package, framework, library, or module that generated the associated Span'
+        examples: '"grpc", "django", "JDBI"'
+
+    'sampling.priority':
+        type: integer
+        comment: 'If greater than 0, a hint to the Tracer to do its best to capture the trace. If 0, a hint to the trace to not-capture the trace. If absent, the Tracer should use its default sampling mechanism.'
+        examples: '0, 1'
+
+
+    #####################################################################
+    # HTTP tags
+    #####################################################################
+
+    'http.url':
+        type: string
+        comment: 'URL of the request being handled in this segment of the trace, in standard URI format'
+        examples: '"https://domain.net/path/to?resource=here"'
+
+    'http.method':
+        type: string
+        comment: 'HTTP method of the request for the associated Span'
+        examples: '"GET", "POST"'
+
+    'http.status_code':
+        type: integer
+        comment: 'HTTP response status code for the associated Span'
+        examples: '200, 503, 404'
+
+
+    #####################################################################
+    # RPC tags
+    #####################################################################
+
+    'span.kind':
+        type: string
+        comment: 'Either "client" or "server" for the appropriate roles in an RPC'
+        examples: '"client", "server"'
+ 
+    'peer.hostname':
+        type: string
+        comment: 'Remote hostname'
+        examples: '"opentracing.io", "internal.dns.name"'
+ 
+    'peer.ipv4':
+        type: string
+        comment: 'Remote IPv4 address as a .-separated tuple'
+        examples: '"127.0.0.1"'
+ 
+    'peer.ipv6':
+        type: string
+        comment: 'Remote IPv6 address as a string of colon-separated 4-char hex tuples'
+        examples: '"2001:0db8:85a3:0000:0000:8a2e:0370:7334"'
+ 
+    'peer.port':
+        type: integer
+        comment: 'Remote port'
+        examples: '80'
+ 
+    'peer.service':
+        type: string
+        comment: 'Remote service name (for some unspecified definition of "service")'
+        examples: '"elasticsearch", "a_custom_microservice", "memcache"'
+ 
+standard_log_fields:
+    'event':
+        type: string
+        comment: 'A stable identifier for some notable moment in the lifetime of a Span. For instance, a mutex lock acquisition or release or the sorts of lifetime events in a browser page load described in the [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) specification.'
+        examples: 'From Zipkin, "cs", "sr", "ss", or "cr". Or, more generally, "initialized" or "timed out"'

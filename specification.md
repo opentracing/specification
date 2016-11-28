@@ -52,12 +52,15 @@ Temporal relationships between Spans in a single Trace
 
 Each **Span** encapsulates the following state:
 
+- An operation name
 - A start timestamp
 - A finish timestamp
 - A set of zero or more key:value **Span Tags**. The keys must be strings. The
   values may be strings, bools, or numeric types.
 - A set of zero or more **Span Logs**, each of which is itself a key:value map
-  paired with a timestamp
+  paired with a timestamp. The keys must be strings, though the values may be
+  of any type. Not all OpenTracing implementations must support every value
+  type.
 - A **SpanContext** (see below)
 - **References** to zero or more causally-related **Spans** (via the
   **SpanContext** of those related **Spans**)
@@ -88,6 +91,14 @@ Required parameters
       larger computation). The operation name should be **the most general
       string that identifies a (statistically) interesting class of `Span`
       instances**. That is, `"get_user"` is better than `"get_user/314159"`.
+
+For example, here are potential **operation names** for a `Span` that gets hypothetical account information:
+
+| Operation Name | Guidance |
+|:---------------|:--------|
+| `get` | Too general |
+| `get_account/792` | Too specific |
+| `get_account` | Good, and `account_id=792` would make a nice **`Span` tag** |
 
 Optional parameters
     - Zero or more **references**, including a shorthand for `CHILD_OF` and
@@ -128,14 +139,21 @@ With the exception of the method to retrieve the `Span`'s `SpanContext`, none of
 
 There should be no parameters.
 
-**Returns** the `SpanContext` for the given `Span`
+**Returns** the `SpanContext` for the given `Span`. The returned value may be used even after the `Span` is finished.
 
 #### Overwrite the operation name
 
 Required parameters
     - The new **operation name**, which supersedes whatever was passed in when the `Span` was started
 
-#### Set `Span` tags
+#### Finish the `Span`
+
+Optional parameters
+    - An explicit **finish timestamp** for the `Span`; if omitted, the current walltime is used implicitly.
+
+With the exception of the method to retrieve a `Span`'s `SpanContext`, no method may be called on a `Span` instance after it's finished.
+
+#### Set a `Span` tag
 
 Required parameters
     - The tag key, which must be a string
