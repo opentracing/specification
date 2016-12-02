@@ -128,7 +128,7 @@ Required parameters
 
 Both injection and extraction rely on an extensible **format** parameter that dictates the type of the associated "carrier" as well as how a `SpanContext` is encoded in that carrier. All of the following **format**s must be supported by all Tracer implementations.
     - **Text Map**: an arbitrary string-to-string map with an unrestricted character set for both keys and values
-    - **HTTP Headers**: a string-to-string map with keys and values that are suitable for use in HTTP headers. That is, keys must not require strict casing and values must be URL-encoded
+    - **HTTP Headers**: a string-to-string map with keys and values that are suitable for use in HTTP headers (a la [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4). In practice, since there is such "diversity" in the way that HTTP headers are treated in the wild, it is strongly recommended that Tracer implementations use a limited HTTP header key space and escape values conservatively.
     - **Binary**: a (single) arbitrary binary blob representing a `SpanContext`
 
 ### `Span`
@@ -159,7 +159,7 @@ Required parameters
     - The tag key, which must be a string
     - The tag value, which must be either a string, a boolean value, or a numeric type
 
-Note that the OpenTracing project documents certain **"standard tags"** which have prescribed semantic meanings. TODO: add these tags to a central .yaml file and link here.
+Note that the OpenTracing project documents certain **["standard tags"](https://github.com/opentracing/specification/blob/master/data_conventions.yaml)** that have prescribed semantic meanings.
 
 #### Log structured data
 
@@ -169,7 +169,7 @@ Required parameters
 Optional parameters
     - An explicit timestamp. If specified, it must fall between the local start and finish time for the span.
 
-Note that the OpenTracing project documents certain **"standard log keys"** which have prescribed semantic meanings. TODO: add these log keys to a central .yaml file and link here.
+Note that the OpenTracing project documents certain **["standard log keys"](https://github.com/opentracing/specification/blob/master/data_conventions.yaml)** which have prescribed semantic meanings.
 
 #### Set a **baggage** item
 
