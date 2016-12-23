@@ -86,12 +86,7 @@ Formally, it has the following capabilities:
 
 Required parameters
 
-    - An **operation name**, a human-readable string which
-      concisely represents the work done by the Span (for example, an RPC
-      method name, a function name, or the name of a subtask or stage within a
-      larger computation). The operation name should be **the most general
-      string that identifies a (statistically) interesting class of `Span`
-      instances**. That is, `"get_user"` is better than `"get_user/314159"`.
+- An **operation name**, a human-readable string which concisely represents the work done by the Span (for example, an RPC method name, a function name, or the name of a subtask or stage within a larger computation). The operation name should be **the most general string that identifies a (statistically) interesting class of `Span` instances**. That is, `"get_user"` is better than `"get_user/314159"`.
 
 For example, here are potential **operation names** for a `Span` that gets hypothetical account information:
 
@@ -103,11 +98,9 @@ For example, here are potential **operation names** for a `Span` that gets hypot
 
 Optional parameters
 
-    - Zero or more **references**, including a shorthand for `CHILD_OF` and
-      `FOLLOWS_FROM` reference types if possible.
-    - An optional explicit **start timestamp**; if omitted, the current
-      walltime is used by default
-    - Zero or more **tags**
+- Zero or more **references**, including a shorthand for `CHILD_OF` and `FOLLOWS_FROM` reference types if possible.
+- An optional explicit **start timestamp**; if omitted, the current walltime is used by default
+- Zero or more **tags**
 
 **Returns** a `Span` instance that's already started (but not `Finish`ed)
 
@@ -115,16 +108,16 @@ Optional parameters
 
 Required parameters
 
-    - A **`SpanContext`** instance
-    - A **format** descriptor (typically but not necessarily a string constant) which tells the `Tracer` implementation how to encode the `SpanContext` in the carrier parameter
-    - A **carrier**, whose type is dictated by the **format**. The `Tracer` implementation will encode the `SpanContext` in this carrier object according to the **format**.
+- A **`SpanContext`** instance
+- A **format** descriptor (typically but not necessarily a string constant) which tells the `Tracer` implementation how to encode the `SpanContext` in the carrier parameter
+- A **carrier**, whose type is dictated by the **format**. The `Tracer` implementation will encode the `SpanContext` in this carrier object according to the **format**.
 
 #### Extract a `SpanContext` from a carrier
 
 Required parameters
 
-    - A **format** descriptor (typically but not necessarily a string constant) which tells the `Tracer` implementation how to decode `SpanContext` from the carrier parameter
-    - A **carrier**, whose type is dictated by the **format**. The `Tracer` implementation will decode the `SpanContext` from this carrier object according to **format**.
+- A **format** descriptor (typically but not necessarily a string constant) which tells the `Tracer` implementation how to decode `SpanContext` from the carrier parameter
+- A **carrier**, whose type is dictated by the **format**. The `Tracer` implementation will decode the `SpanContext` from this carrier object according to **format**.
 
 **Returns** a `SpanContext` instance suitable for use as a **reference** when starting a new `Span` via the `Tracer`.
 
@@ -132,9 +125,9 @@ Required parameters
 
 Both injection and extraction rely on an extensible **format** parameter that dictates the type of the associated "carrier" as well as how a `SpanContext` is encoded in that carrier. All of the following **format**s must be supported by all Tracer implementations.
 
-    - **Text Map**: an arbitrary string-to-string map with an unrestricted character set for both keys and values
-    - **HTTP Headers**: a string-to-string map with keys and values that are suitable for use in HTTP headers (a la [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4). In practice, since there is such "diversity" in the way that HTTP headers are treated in the wild, it is strongly recommended that Tracer implementations use a limited HTTP header key space and escape values conservatively.
-    - **Binary**: a (single) arbitrary binary blob representing a `SpanContext`
+- **Text Map**: an arbitrary string-to-string map with an unrestricted character set for both keys and values
+- **HTTP Headers**: a string-to-string map with keys and values that are suitable for use in HTTP headers (a la [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4). In practice, since there is such "diversity" in the way that HTTP headers are treated in the wild, it is strongly recommended that Tracer implementations use a limited HTTP header key space and escape values conservatively.
+- **Binary**: a (single) arbitrary binary blob representing a `SpanContext`
 
 ### `Span`
 
@@ -150,13 +143,13 @@ There should be no parameters.
 
 Required parameters
 
-    - The new **operation name**, which supersedes whatever was passed in when the `Span` was started
+- The new **operation name**, which supersedes whatever was passed in when the `Span` was started
 
 #### Finish the `Span`
 
 Optional parameters
 
-    - An explicit **finish timestamp** for the `Span`; if omitted, the current walltime is used implicitly.
+- An explicit **finish timestamp** for the `Span`; if omitted, the current walltime is used implicitly.
 
 With the exception of the method to retrieve a `Span`'s `SpanContext`, no method may be called on a `Span` instance after it's finished.
 
@@ -164,8 +157,8 @@ With the exception of the method to retrieve a `Span`'s `SpanContext`, no method
 
 Required parameters
 
-    - The tag key, which must be a string
-    - The tag value, which must be either a string, a boolean value, or a numeric type
+- The tag key, which must be a string
+- The tag value, which must be either a string, a boolean value, or a numeric type
 
 Note that the OpenTracing project documents certain **["standard tags"](https://github.com/opentracing/specification/blob/master/data_conventions.yaml)** that have prescribed semantic meanings.
 
@@ -173,11 +166,11 @@ Note that the OpenTracing project documents certain **["standard tags"](https://
 
 Required parameters
 
-    - One or more key:value pairs, where the keys must be strings and the values may have any type at all. Some OpenTracing implementations may handle more (or more of) certain log values than others.
+- One or more key:value pairs, where the keys must be strings and the values may have any type at all. Some OpenTracing implementations may handle more (or more of) certain log values than others.
 
 Optional parameters
 
-    - An explicit timestamp. If specified, it must fall between the local start and finish time for the span.
+- An explicit timestamp. If specified, it must fall between the local start and finish time for the span.
 
 Note that the OpenTracing project documents certain **["standard log keys"](https://github.com/opentracing/specification/blob/master/data_conventions.yaml)** which have prescribed semantic meanings.
 
@@ -191,14 +184,14 @@ Use this feature thoughtfully and with care. Every key and value is copied into 
 
 Required parameters
 
-    - The **baggage key**, a string
-    - The **baggage value**, a string
+- The **baggage key**, a string
+- The **baggage value**, a string
 
 #### Get a **baggage** item
 
 Required parameters
 
-    - The **baggage key**, a string
+- The **baggage key**, a string
 
 **Returns** the corresponding **baggage value**, xor some indication that such a value was missing.
 
