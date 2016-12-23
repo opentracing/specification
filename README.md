@@ -1,6 +1,6 @@
 # The OpenTracing Specification repository
 
-OpenTracing Specification Official Website: [http://opentracing.io/documentation/pages/spec](http://opentracing.io/documentation/pages/spec)
+OpenTracing Specification Official Website: [http://opentracing.io/spec](http://opentracing.io/spec).
 
 The github.com/opentracing/specification repository is a place to document (and discuss) the OpenTracing specification itself (independent of any particular language or platform).
 
