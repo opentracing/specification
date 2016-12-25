@@ -6,6 +6,10 @@
 
 This is the "formal" OpenTracing semantic specification. Since OpenTracing must work across many languages, this document takes care to avoid language-specific concepts. That said, there is an understanding throughout that all languages have some concept of an "interface" which encapsulates a set of related capabilities.
 
+### Versioning policy
+
+The OpenTracing specification uses a `Major.Minor` version number but has no `.Patch` component. The major version increments when backwards-incompatible changes are made to the specification. The minor version increments for non-breaking changes like the introduction of new standard tags, log fields, or SpanContext reference types. (You can read more about the motivation for this versioning scheme at Issue [specification#2](https://github.com/opentracing/specification/issues/2#issuecomment-261740811))
+
 ## The OpenTracing Data Model
 
 **Traces** in OpenTracing are defined implicitly by their **Spans**. In
