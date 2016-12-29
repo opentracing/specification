@@ -26,7 +26,7 @@ Causal relationships between Spans in a single Trace
             |
      +------+------+
      |             |
- [Span B]      [Span C] ←←←(Span C is a "ChildOf" Span A)
+ [Span B]      [Span C] ←←←(Span C is a `ChildOf` Span A)
      |             |
  [Span D]      +---+-------+
                |           |
@@ -34,7 +34,7 @@ Causal relationships between Spans in a single Trace
                                        ↑
                                        ↑
                                        ↑
-                         (Span G "FollowsFrom" Span F)
+                         (Span G `FollowsFrom` Span F)
 
 ~~~
 
@@ -66,13 +66,56 @@ Each **Span** encapsulates the following state:
   of any type. Not all OpenTracing implementations must support every value
   type.
 - A **SpanContext** (see below)
-- **References** to zero or more causally-related **Spans** (via the
+- [**References**](#references) to zero or more causally-related **Spans** (via the
   **SpanContext** of those related **Spans**)
 
 Each **SpanContext** encapsulates the following state:
 
 - Any OpenTracing-implementation-dependent state (for example, trace and span ids) needed to refer to a distinct **Span** across a process boundary
 - **Baggage Items**, which are just key:value pairs that cross process boundaries
+
+<span id="references"></span>
+
+### References between Spans
+
+A Span may reference zero or more other **SpanContexts** that are causally related. OpenTracing presently defines two types of references: `ChildOf` and `FollowsFrom`. **Both reference types specifically model direct causal relationships between a child Span and a parent Span.** In the future, OpenTracing may also support reference types for Spans with non-causal relationships (e.g., Spans that are batched together, Spans that are stuck in the same queue, etc).
+
+**`ChildOf` references:** A Span may be the `ChildOf` a parent Span. In a `ChildOf` reference, the parent Span depends on the child Span in some capacity. All of the following would constitute `ChildOf` relationships:
+
+- A Span representing the server side of an RPC may be the `ChildOf` a Span representing the client side of that RPC
+- A Span representing a SQL insert may be the `ChildOf` a Span representing an ORM save method
+- Many Spans doing concurrent (perhaps distributed) work may all individually be the `ChildOf` a single parent Span that merges the results for all children that return within a deadline
+
+These could all be valid timing diagrams for children that are the `ChildOf` a parent.
+
+~~~
+    [-Parent Span---------]
+         [-Child Span----]
+
+    [-Parent Span--------------]
+         [-Child Span A----]
+          [-Child Span B----]
+        [-Child Span C----]
+         [-Child Span D---------------]
+         [-Child Span E----]
+~~~
+
+**`FollowsFrom` references:** Some parent Spans do not depend in any way on the result of their child Spans. In these cases, we say merely that the child Span `FollowsFrom` the parent Span in a causal sense. There are many distinct `FollowsFrom` reference sub-categories, and in future versions of OpenTracing they may be distinguished more formally.
+
+These can all be valid timing diagrams for children that "FollowFrom" a parent.
+
+~~~
+    [-Parent Span-]  [-Child Span-]
+
+
+    [-Parent Span--]
+     [-Child Span-]
+
+
+    [-Parent Span-]
+                [-Child Span-]
+~~~
+
 
 ## The OpenTracing API
 
@@ -102,7 +145,7 @@ For example, here are potential **operation names** for a `Span` that gets hypot
 
 Optional parameters
 
-- Zero or more **references**, including a shorthand for `CHILD_OF` and `FOLLOWS_FROM` reference types if possible.
+- Zero or more **references** to related `SpanContext`s, including a shorthand for `ChildOf` and `FollowsFrom` reference types if possible.
 - An optional explicit **start timestamp**; if omitted, the current walltime is used by default
 - Zero or more **tags**
 
