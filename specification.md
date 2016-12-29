@@ -244,7 +244,7 @@ Required parameters
 
 ### `SpanContext`
 
-The `SpanContext` is more of a "concept" than a useful piece of functionality at the generic OpenTracing layer. That said, it is of critical important to OpenTracing *implementations* and does present a thin API of its own. Most OpenTracing users only interact with `SpanContext` via **references** when starting new `Span`s, or when injecting/extracting a trace to/from some transport protocol.
+The `SpanContext` is more of a "concept" than a useful piece of functionality at the generic OpenTracing layer. That said, it is of critical importance to OpenTracing *implementations* and does present a thin API of its own. Most OpenTracing users only interact with `SpanContext` via [**references**](#references) when starting new `Span`s, or when injecting/extracting a trace to/from some transport protocol.
 
 In OpenTracing we force `SpanContext` instances to be **immutable** in order to avoid complicated lifetime issues around `Span` finish and references.
 
