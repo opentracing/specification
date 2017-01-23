@@ -66,15 +66,13 @@ Each **Span** encapsulates the following state:
   of any type. Not all OpenTracing implementations must support every value
   type.
 - A **SpanContext** (see below)
-- [**References**](#references) to zero or more causally-related **Spans** (via the
+- [**References**](#references-between-spans) to zero or more causally-related **Spans** (via the
   **SpanContext** of those related **Spans**)
 
 Each **SpanContext** encapsulates the following state:
 
 - Any OpenTracing-implementation-dependent state (for example, trace and span ids) needed to refer to a distinct **Span** across a process boundary
 - **Baggage Items**, which are just key:value pairs that cross process boundaries
-
-<span id="references"></span>
 
 ### References between Spans
 
@@ -244,7 +242,7 @@ Required parameters
 
 ### `SpanContext`
 
-The `SpanContext` is more of a "concept" than a useful piece of functionality at the generic OpenTracing layer. That said, it is of critical importance to OpenTracing *implementations* and does present a thin API of its own. Most OpenTracing users only interact with `SpanContext` via [**references**](#references) when starting new `Span`s, or when injecting/extracting a trace to/from some transport protocol.
+The `SpanContext` is more of a "concept" than a useful piece of functionality at the generic OpenTracing layer. That said, it is of critical importance to OpenTracing *implementations* and does present a thin API of its own. Most OpenTracing users only interact with `SpanContext` via [**references**](#references-between-spans) when starting new `Span`s, or when injecting/extracting a trace to/from some transport protocol.
 
 In OpenTracing we force `SpanContext` instances to be **immutable** in order to avoid complicated lifetime issues around `Span` finish and references.
 
