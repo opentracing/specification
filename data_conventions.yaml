@@ -88,16 +88,22 @@ standard_log_fields:
         comment: 'A stable identifier for some notable moment in the lifetime of a Span. For instance, a mutex lock acquisition or release or the sorts of lifetime events in a browser page load described in the [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) specification.'
         examples: 'From Zipkin, "cs", "sr", "ss", or "cr". Or, more generally, "initialized" or "timed out"'
 
-    #####################################################################
-    # Errors: `message` and `stack` pertain to logs where "event"="error"
-    #####################################################################
-
     'message':
         type: string
-        comment: 'A concise, one-line message explaining the error (for "event"="error" logs)'
-        examples: '"Could not connect to backend", "Required parameter foo is nil"'
+        comment: 'A concise, human-readable, one-line message explaining the event'
+        examples: '"Could not connect to backend", "Cache invalidation succeeded"'
 
     'stack':
         type: string
-        comment: 'A stack trace in platform-conventional format (for "event"="error" logs)'
+        comment: 'A stack trace in platform-conventional format'
         examples: '"File \"example.py\", line 7, in <module>\ncaller()\nFile \"example.py\", line 5, in caller\ncallee()\nFile \"example.py\", line 2, in callee\nraise Exception(\"Yikes\")\n"'
+
+
+    #####################################################################
+    # Errors only:
+    #####################################################################
+
+    'error.kind':
+        type: string
+        comment: 'The type or "kind" of an error (only for "event"="error" logs)'
+        examples: '"Exception", "OSError"'
