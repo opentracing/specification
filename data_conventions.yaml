@@ -86,7 +86,7 @@ standard_log_fields:
     'event':
         type: string
         comment: 'A stable identifier for some notable moment in the lifetime of a Span. For instance, a mutex lock acquisition or release or the sorts of lifetime events in a browser page load described in the [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) specification.'
-        examples: 'From Zipkin, "cs", "sr", "ss", or "cr". Or, more generally, "initialized" or "timed out"'
+        examples: 'From Zipkin, "cs", "sr", "ss", or "cr". Or, more generally, "initialized" or "timed out". For errors, "error"'
 
     'message':
         type: string
@@ -100,18 +100,19 @@ standard_log_fields:
 
 
     ###########################################################################
-    # ERROR-RELATED FIELDS:
+    # SPECIFYING ERRORS
     #
     # Errors may be reported to OpenTracing in different ways, largely
-    # depending on the language.
+    # depending on the language. Some of the fields are specific to errors;
+    # others are not (e.g., the `event` field, or the `message` field).
     #
     # For languages where an error object encapsulates a stack trace and type
-    # information:
-    #  - error=true
+    # information, log the following fields:
+    #  - event="error"
     #  - error.object=<error object instance>
     #
     # For other languages, or when above is not feasible:
-    #  - error=true
+    #  - event="error"
     #  - message="..."
     #  - stack="..." (optional)
     #  - error.kind="..." (optional)
@@ -119,10 +120,6 @@ standard_log_fields:
     # This scheme allows Tracer implementations to extract what information
     # they need from the actual error object when it's available.
     ###########################################################################
-
-    'error':
-        type: bool
-        comment: '`true` if and only if the log represents an error'
 
     'error.object':
         type: object
