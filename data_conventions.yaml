@@ -123,7 +123,7 @@ standard_log_fields:
 
     'error.object':
         type: object
-        comment: 'For languages that suppor such a thing (e.g., Java, Python), the actual Throwable/Exception/Error object instance itself.'
+        comment: 'For languages that support such a thing (e.g., Java, Python), the actual Throwable/Exception/Error object instance itself.'
         examples: 'A java.lang.UnsupportedOperationException instance, a python exceptions.NameError instance'
 
     'error.kind':
