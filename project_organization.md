@@ -48,3 +48,10 @@ OTIAB members have the following primary responsibilities:
 ## Contributed OpenTracing Support
 
 Repositories under [github.com/opentracing-contrib](https://github.com/opentracing-contrib) pertain to specific open-source software packages and projects. Each may have its own owners and internal policies regarding PRs, review requirements, and committer management. You can learn more about OpenTracing contributions via the [opentracing-contrib meta-repository](https://github.com/opentracing-contrib/meta).
+
+## Afterword: what's the point of `^^^`?
+
+Sometimes formal governance and acronyms like "OTSC" or "OTIAB" signify hierarchy and exclusion in an open-source effort. The intention with OpenTracing's organization is to do exactly the opposite: by guaranteeing participation from multiple constituencies and multiple software projects and organizations, these simple governance structures aim to bring more ideas to the table. Inasmuch as it's possible, all OpenTracing discussions will take place out in the open and/or at clearly-advertised times and (virtual) places.
+
+If you would like to take on a more formal role on the OTSC or OTIAB, please reach out to an existing OTSC member and we can take it from there.
+
