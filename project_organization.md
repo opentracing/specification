@@ -1,11 +1,3 @@
-## Industrial Advisory Board
-
-OpenTracing has an **Industrial Advisory Board** (IAB) that comprises engineers with detailed knowledge of tracing technology at companies of different scales and software maturity. The Specification Shepherds engage with the IAB on a periodic basis to gather feedback about successes, challenges, and open-source packages which would benefit from greater OpenTracing support.
-
-## Contributed OpenTracing Support
-
-Repositories under [github.com/opentracing-contrib](https://github.com/opentracing-contrib) pertain to specific open-source software packages and projects. Each may have its own owners and internal policies regarding PRs, review requirements, and committer management.
-
 # OpenTracing Project Organization
 
 [OpenTracing](http://opentracing.io) is essentially a standardization effort. There are three constituencies that care about this standard:
@@ -44,6 +36,8 @@ OTIAB members have the following primary responsibilities:
 - Describe and rationalize tracing and observability challenges within their own companies
 - Provide feedback about possible priorities and/or specific proposals from the OTSC
 - Represent OpenTracing’s interests within their own organizations
+
+The initial list of OTIAB members will be announced in March 2017.
 
 ## Contributed OpenTracing Support
 
