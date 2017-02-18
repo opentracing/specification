@@ -91,9 +91,9 @@ standard_tags:
         comment: 'Database connect url'
         examples: 'In java, "jdbc:mysql://127.0.0.1:3306/db".'
 
-    'db.sql':
+    'db.statement':
         type: string
-        comment: 'Database structured query language'
+        comment: 'Database SQL(structured query language) statement.'
         examples: 'SELECT * FROM wuser_table'
 
 standard_log_fields:
