@@ -86,4 +86,47 @@ standard_log_fields:
     'event':
         type: string
         comment: 'A stable identifier for some notable moment in the lifetime of a Span. For instance, a mutex lock acquisition or release or the sorts of lifetime events in a browser page load described in the [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) specification.'
-        examples: 'From Zipkin, "cs", "sr", "ss", or "cr". Or, more generally, "initialized" or "timed out"'
+        examples: 'From Zipkin, "cs", "sr", "ss", or "cr". Or, more generally, "initialized" or "timed out". For errors, "error"'
+
+    'message':
+        type: string
+        comment: 'A concise, human-readable, one-line message explaining the event'
+        examples: '"Could not connect to backend", "Cache invalidation succeeded"'
+
+    'stack':
+        type: string
+        comment: 'A stack trace in platform-conventional format; may or may not pertain to an error'
+        examples: '"File \"example.py\", line 7, in <module>\ncaller()\nFile \"example.py\", line 5, in caller\ncallee()\nFile \"example.py\", line 2, in callee\nraise Exception(\"Yikes\")\n"'
+
+
+    ###########################################################################
+    # SPECIFYING ERRORS
+    #
+    # Errors may be reported to OpenTracing in different ways, largely
+    # depending on the language. Some of the fields are specific to errors;
+    # others are not (e.g., the `event` field, or the `message` field).
+    #
+    # For languages where an error object encapsulates a stack trace and type
+    # information, log the following fields:
+    #  - event="error"
+    #  - error.object=<error object instance>
+    #
+    # For other languages, or when above is not feasible:
+    #  - event="error"
+    #  - message="..."
+    #  - stack="..." (optional)
+    #  - error.kind="..." (optional)
+    #
+    # This scheme allows Tracer implementations to extract what information
+    # they need from the actual error object when it's available.
+    ###########################################################################
+
+    'error.object':
+        type: object
+        comment: 'For languages that support such a thing (e.g., Java, Python), the actual Throwable/Exception/Error object instance itself.'
+        examples: 'A java.lang.UnsupportedOperationException instance, a python exceptions.NameError instance'
+
+    'error.kind':
+        type: string
+        comment: 'The type or "kind" of an error (only for "event"="error" logs)'
+        examples: '"Exception", "OSError"'
