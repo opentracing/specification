@@ -56,32 +56,46 @@ standard_tags:
         type: string
         comment: 'Either "client" or "server" for the appropriate roles in an RPC'
         examples: '"client", "server"'
- 
+
     'peer.hostname':
         type: string
         comment: 'Remote hostname'
         examples: '"opentracing.io", "internal.dns.name"'
- 
+
     'peer.ipv4':
         type: string
         comment: 'Remote IPv4 address as a .-separated tuple'
         examples: '"127.0.0.1"'
- 
+
     'peer.ipv6':
         type: string
         comment: 'Remote IPv6 address as a string of colon-separated 4-char hex tuples'
         examples: '"2001:0db8:85a3:0000:0000:8a2e:0370:7334"'
- 
+
     'peer.port':
         type: integer
         comment: 'Remote port'
         examples: '80'
- 
+
     'peer.service':
         type: string
         comment: 'Remote service name (for some unspecified definition of "service")'
         examples: '"elasticsearch", "a_custom_microservice", "memcache"'
- 
+
+    #####################################################################
+    # DATABASE tags
+    #####################################################################
+
+    'db.url':
+        type: string
+        comment: 'Database connect url'
+        examples: 'In python, "root:123456@tcp(localhost:3306)/db"; In java, "jdbc:mysql://127.0.0.1:3306/db".'
+
+    'db.sql':
+        type: string
+        comment: 'Database structured query language'
+        examples: 'SELECT * FROM wuser_table'
+
 standard_log_fields:
     'event':
         type: string
