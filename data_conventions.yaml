@@ -89,7 +89,7 @@ standard_tags:
     'db.url':
         type: string
         comment: 'Database connect url'
-        examples: 'In python, "host=localhost, port=3306, db=test"; In java, "jdbc:mysql://127.0.0.1:3306/db".'
+        examples: 'In java, "jdbc:mysql://127.0.0.1:3306/db".'
 
     'db.sql':
         type: string
