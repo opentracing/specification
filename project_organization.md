@@ -1,6 +1,6 @@
 # OpenTracing Project Organization
 
-[OpenTracing](http://opentracing.io) is essentially a standardization effort. There are three constituencies that care about this standard:
+[OpenTracing](http://opentracing.io) is a standardization effort that makes it easier to consistently model and describe the behavior of transactions in distributed systems. There are three constituencies that care about this standard:
 
 1. **Tracing tool maintainers:** "Instrumenting all software" is an unreasonable goal for any one particular tracing or monitoring project or vendor. OpenTracing essentially amortizes this work.
 2. **Software developers who build and deploy applications:** These developers want to use whatever tracing and observability tools that work best within their organization's infrastructure, and they want to choose those tools independent of whatever third-party (open-source) software packages they happen to have built around.
