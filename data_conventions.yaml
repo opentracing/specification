@@ -101,10 +101,10 @@ standard_tags:
         comment: 'Username for accessing database'
         examples: 'db_read_user'
 
-    'sql.statement':
+    'db.statement':
         type: string
-        comment: 'Database SQL(structured query language) statement.'
-        examples: 'SELECT * FROM wuser_table'
+        comment: 'A database statement for the given database type.'
+        examples: 'For db.type="SQL", "SELECT * FROM wuser_table". For db.type="redis", "SET mykey "WuValue".'
 
 standard_log_fields:
     'event':
