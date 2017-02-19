@@ -86,6 +86,11 @@ standard_tags:
     # DATABASE tags
     #####################################################################
 
+    'db.type':
+        type: string
+        comment: 'Database type'
+        examples: 'If Database supports SQL-access, "SQL". Others, Database product name(stay lower case), e.g. "cassandra", "hbase", "redis".'
+
     'db.instance':
         type: string
         comment: 'Database instance name'
