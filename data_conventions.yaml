@@ -86,12 +86,17 @@ standard_tags:
     # DATABASE tags
     #####################################################################
 
-    'db.url':
+    'db.instance':
         type: string
-        comment: 'Database connect url'
-        examples: 'In java, "jdbc:mysql://127.0.0.1:3306/db".'
+        comment: 'Database instance name'
+        examples: 'In java, if the jdbc.url="jdbc:mysql://127.0.0.1:3306/db", instance name is "db".'
 
-    'db.statement':
+    'db.user':
+        type: string
+        comment: 'Username for accessing database'
+        examples: 'db_read_user'
+
+    'sql.statement':
         type: string
         comment: 'Database SQL(structured query language) statement.'
         examples: 'SELECT * FROM wuser_table'
