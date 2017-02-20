@@ -15,7 +15,7 @@ The authors of any tracing or observability tool that supports OpenTracing are *
 A subset of these tracing system authors are part of the **OpenTracing Specification Council** (OTSC). Said council members have write access across the [github.com/opentracing](https://github.com/opentracing) and [github.com/opentracing-contrib](https://github.com/opentracing-contrib) organizations (though other individuals may also have write access to specific repos within those organizations). Each OTSC member represents a tracing system which has substantial institutional support (and thus longevity). The current OpenTracing Specification Council is as follows (in alphabetical order):
 
 - Bas van Beek ([@basvanbeek](https://github.com/basvanbeek)): Zipkin
-- Ben Sigelman ([@bensigelman](https://github.com/bensigelman)): LightStep
+- Ben Sigelman ([@bhs](https://github.com/bensigelman)): LightStep
 - Pavol Loffay ([@pavolloffay](https://github.com/pavolloffay)): Hawkular
 - Yuri Shkuro ([@yurishkuro](https://github.com/yurishkuro)): Jaeger
 
