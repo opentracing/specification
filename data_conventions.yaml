@@ -89,7 +89,7 @@ standard_tags:
     'db.type':
         type: string
         comment: 'Database type'
-        examples: 'If Database supports SQL-access, "sql". Others, Database product name(stay lower case), e.g. "cassandra", "hbase", "redis".'
+        examples: 'For any SQL database, "sql". For others, the lower-case database category, e.g. "cassandra", "hbase", or "redis".'
 
     'db.instance':
         type: string
