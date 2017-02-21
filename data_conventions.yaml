@@ -89,17 +89,17 @@ standard_tags:
     'db.type':
         type: string
         comment: 'Database type'
-        examples: 'If Database supports SQL-access, "SQL". Others, Database product name(stay lower case), e.g. "cassandra", "hbase", "redis".'
+        examples: 'If Database supports SQL-access, "sql". Others, Database product name(stay lower case), e.g. "cassandra", "hbase", "redis".'
 
     'db.instance':
         type: string
         comment: 'Database instance name'
-        examples: 'In java, if the jdbc.url="jdbc:mysql://127.0.0.1:3306/db", instance name is "db".'
+        examples: 'In java, if the jdbc.url="jdbc:mysql://127.0.0.1:3306/customers", instance name is "customers".'
 
     'db.user':
         type: string
         comment: 'Username for accessing database'
-        examples: 'db_read_user'
+        examples: '"readonly_user" or "reporting_user"'
 
     'db.statement':
         type: string
