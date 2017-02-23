@@ -34,16 +34,18 @@ Use Spring JdbcTemplate (Java ORM framework), query a user from `users`.
 ### Trace a Redis set
 Background story:
 
-Use Redis-rb (Ruby client library for Redis), set a key:value pair into Redis.
+Use [redis-py (Redis Python Client)](https://github.com/andymccurdy/redis-py), set a key:value pair into Redis.
 
 - Redis env
-  - vender: Jedis
+  - vender: redis-py
   - ip: 19.84.11.8
   - port: 6379
   - db: 15
-- Use Redis-rb:
-```ruby
-redis.set("mykey", "WuValue")
+- Use redis-py:
+```python
+>>> import redis
+>>> r = redis.StrictRedis(host='localhost', port=6379, db=0)
+>>> r.set("mykey", "WuValue")
 ```
 
 - Tags
@@ -55,6 +57,6 @@ redis.set("mykey", "WuValue")
 |db.statement| SET mykey "WuValue"|
 |peer.ipv4| 19.84.11.8|
 |peer.port| 6379|
-|peer.service| redis/redis-rb/set|
+|peer.service| redis/redis-py/set|
 |span.kind| client|
-|component| Redis-rb |
+|component| redis-py |
