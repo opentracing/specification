@@ -12,12 +12,31 @@ Changes to this file affect the OpenTracing specification version. Additions sho
 
 ### Span tag keys
 
-| Span tag key name   | Type    | Notes    |
-|:--------------------|:--------|:---------|
-| `error`             | bool    | "true" if and only if the associated Span is in an error state |
+| Span tag key name   | Type    | Notes and examples |
+|:--------------------|:--------|:-------------------|
 | `component`         | string  | The software package, framework, library, or module that generated the associated Span. E.g., `"grpc"`, `"django"`, `"JDBI"`. |
+| `db.instance` | string | Database instance name. E.g., In java, if the jdbc.url="jdbc:mysql://127.0.0.1:3306/customers", the instance name is "customers". |
+| `db.statement` | string | A database statement for the given database type. E.g., for db.type="SQL", "SELECT * FROM wuser_table"; for db.type="redis", "SET mykey 'WuValue'". |
+| `db.type` | string | Database type. For any SQL database, "sql". For others, the lower-case database category, e.g. "cassandra", "hbase", or "redis". |
+| `db.user` | string | Username for accessing database. E.g., "readonly_user" or "reporting_user" |
+| `error`             | bool    | "true" if and only if the associated Span is in an error state |
+| `http.method` | string | HTTP method of the request for the associated Span. E.g., `"GET"`, `"POST"` |
+| `http.status_code` | integer | HTTP response status code for the associated Span. E.g., 200, 503, 404 |
+| `http.url` | string | URL of the request being handled in this segment of the trace, in standard URI format. E.g., '"https://domain.net/path/to?resource=here"' |
+| `peer.hostname` | string | Remote hostname. E.g., "opentracing.io", "internal.dns.name" |
+| `peer.ipv4` | string | Remote IPv4 address as a .-separated tuple. E.g., "127.0.0.1" |
+| `peer.ipv6` | string | Remote IPv6 address as a string of colon-separated 4-char hex tuples. E.g., "2001:0db8:85a3:0000:0000:8a2e:0370:7334" |
+| `peer.port` | integer | Remote port. E.g., 80 |
+| `peer.service` | string | Remote service name (for some unspecified definition of "service"). E.g., "elasticsearch", "a_custom_microservice", "memcache" |
 | `sampling.priority` | integer | If greater than 0, a hint to the Tracer to do its best to capture the trace. If 0, a hint to the trace to not-capture the trace. If absent, the Tracer should use its default sampling mechanism. |
+| `span.kind` | string | Either "client" or "server" for the appropriate roles in an RPC. E.g., "client", "server" |
 
 ### Log field keys
 
-
+| Log field name      | Type    | Notes and examples |
+|:--------------------|:--------|:-------------------|
+| `error.kind` | string | The type or "kind" of an error (only for "event"="error" logs). E.g., "Exception", "OSError" |
+| `error.object` | object | For languages that support such a thing (e.g., Java, Python), the actual Throwable/Exception/Error object instance itself.. E.g., A java.lang.UnsupportedOperationException instance, a python exceptions.NameError instance |
+| `event` | string | A stable identifier for some notable moment in the lifetime of a Span. For instance, a mutex lock acquisition or release or the sorts of lifetime events in a browser page load described in the [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) specification.. E.g., From Zipkin, "cs", "sr", "ss", or "cr". Or, more generally, "initialized" or "timed out". For errors, "error" |
+| `message` | string | A concise, human-readable, one-line message explaining the event. E.g., "Could not connect to backend", "Cache invalidation succeeded" |
+| `stack` | string | A stack trace in platform-conventional format; may or may not pertain to an error. E.g., "File \"example.py\", line 7, in <module>\ncaller()\nFile \"example.py\", line 5, in caller\ncallee()\nFile \"example.py\", line 2, in callee\nraise Exception(\"Yikes\")\n" |
