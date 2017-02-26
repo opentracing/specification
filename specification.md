@@ -10,6 +10,12 @@ This is the "formal" OpenTracing semantic specification. Since OpenTracing must 
 
 The OpenTracing specification uses a `Major.Minor` version number but has no `.Patch` component. The major version increments when backwards-incompatible changes are made to the specification. The minor version increments for non-breaking changes like the introduction of new standard tags, log fields, or SpanContext reference types. (You can read more about the motivation for this versioning scheme at Issue [specification#2](https://github.com/opentracing/specification/issues/2#issuecomment-261740811))
 
+## The Big Picture: OpenTracing's Scope
+
+OpenTracing's core specification (i.e., this document) is intentionally agnostic about the specifics of particular downstream tracing or monitoring systems. This is because **OpenTracing exists to describe the semantics of transactions in distributed systems.** Describing those transactions should not be influenced by how — or how not — any particular backend likes to process or represent data. For instance, detailed OpenTracing instrumentation can be used to simply measure latencies and apply tags in a timeseries monitoring system (e.g., prometheus); or Span start+finish times along with Span logs may be redirected to a central logging service (e.g., Kibana).
+
+As such, the OpenTracing specification and [data modelling conventions](./data_conventions.md) have a wider scope than some tracing systems, "and that's okay." If certain semantic behavior is out-of-scope for a particular tracing or monitoring system, said system can summarize or simply ignore the respective data flowing from OpenTracing instrumentation.
+
 ## The OpenTracing Data Model
 
 **Traces** in OpenTracing are defined implicitly by their **Spans**. In
@@ -218,6 +224,14 @@ Optional parameters
 - An explicit timestamp. If specified, it must fall between the local start and finish time for the span.
 
 Note that the OpenTracing project documents certain **["standard log keys"](./semantic_conventions.md)** which have prescribed semantic meanings.
+
+##### An aside: "Logging" in general, and what it means in OpenTracing
+
+"Logging" is an overloaded term in our industry; one could reasonably argue that all tracing is just a particularly organized form of logging. OpenTracing "logs" are really just key:value maps that describe a particular moment within the context of a Span.
+
+It is not forbidden but also not particularly wise to redirect general-purpose process-level logging into OpenTracing. Some of those logs may be relevant to transaction traces, but some may also pertain to process-global state which has no direct relationship to a transaction trace.
+
+The granularity of Span logs is intended to be finer than typical "info"-style logging in process-level logging frameworks. Since tracing systems usually have a smart, all-or-nothing per-trace sampling mechanism, the verbosity within a single trace can be higher than what would be appropriate for a process as a whole — especially when that process contends with high concurrency. |
 
 #### Set a **baggage** item
 
