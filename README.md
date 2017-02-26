@@ -10,5 +10,5 @@ Historically this activity took place on the docs repo ([github.com/opentracing/
 
 There are two important files in this repository:
 
-1. [`specification.md`](https://github.com/opentracing/specification/blob/master/specification.md), a versioned description of the current pan-language OpenTracing standard
-1. [`data_conventions.yaml`](https://github.com/opentracing/specification/blob/master/data_conventions.yaml), a structured YAML file describing standard Span tags and Span log keys
+1. [`specification.md`](./specification.md), a versioned description of the current pan-language OpenTracing standard
+1. [`semantic_conventions.md`](./semantic_conventions.yaml), a document describing conventional Span tags and log keys for common semantic scenarios

@@ -205,7 +205,7 @@ Required parameters
 - The tag key, which must be a string
 - The tag value, which must be either a string, a boolean value, or a numeric type
 
-Note that the OpenTracing project documents certain **["standard tags"](https://github.com/opentracing/specification/blob/master/data_conventions.yaml)** that have prescribed semantic meanings.
+Note that the OpenTracing project documents certain **["standard tags"](./semantic_conventions.md)** that have prescribed semantic meanings.
 
 #### Log structured data
 
@@ -217,7 +217,7 @@ Optional parameters
 
 - An explicit timestamp. If specified, it must fall between the local start and finish time for the span.
 
-Note that the OpenTracing project documents certain **["standard log keys"](https://github.com/opentracing/specification/blob/master/data_conventions.yaml)** which have prescribed semantic meanings.
+Note that the OpenTracing project documents certain **["standard log keys"](./semantic_conventions.md)** which have prescribed semantic meanings.
 
 #### Set a **baggage** item
 
