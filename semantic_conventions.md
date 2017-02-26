@@ -31,7 +31,7 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 | `peer.port` | integer | Remote port. E.g., `80` |
 | `peer.service` | string | Remote service name (for some unspecified definition of `"service"`). E.g., `"elasticsearch"`, `"a_custom_microservice"`, `"memcache"` |
 | `sampling.priority` | integer | If greater than 0, a hint to the Tracer to do its best to capture the trace. If 0, a hint to the trace to not-capture the trace. If absent, the Tracer should use its default sampling mechanism. |
-| `span.kind` | string | Either `"client"` or `"server"` for the appropriate roles in an RPC. E.g., `"client"`, `"server"` |
+| `span.kind` | string | Either `"client"` or `"server"` for the appropriate roles in an RPC. |
 
 ### Log fields table
 
