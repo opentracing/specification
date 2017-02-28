@@ -1,0 +1,32 @@
+# This file describes standards and conventions for Span tags and logs.
+#
+# See ./semantic_conventions.md for more context and explanation.
+#
+# Changes to this file affect the OpenTracing specification version. Additions
+# should always bump the minor version, and backwards-incompatible changes (or
+# perhaps very large additions) should bump the major version.
+
+standard_tags:
+    'component': string
+    'error': bool
+    'http.method': string
+    'http.status_code': integer
+    'http.url': string
+    'peer.hostname': string
+    'peer.ipv4': string
+    'peer.ipv6': string
+    'peer.port': integer
+    'peer.service': string
+    'sampling.priority': integer
+    'span.kind': string
+    'db.type': string
+    'db.instance': string
+    'db.user': string
+    'db.statement': string
+
+standard_log_fields:
+    'event': string
+    'message': string
+    'stack': string
+    'error.object': object
+    'error.kind': string
