@@ -63,9 +63,15 @@ The following Span tags combine to model database calls:
 - `peer.hostname`, `peer.ipv4`, `peer.ipv6`, `peer.port`, `peer.service`: optional tags that describe the database peer
 - `span.kind`: `"client"`
 
-### Captured errors
+### Span and log errors
 
-Errors may be described by OpenTracing in different ways, largely depending on the language. Some of these descriptive fields are specific to errors; others are not (e.g., the `event` or `message` fields).
+It is important to distinguish between **error Spans** and **errors logged during Span execution**.
+
+Every Span either finishes in an error state or does not: the `"error"=true` tag distinguishes between those two cases. (If the `"error"` tag is missing altogether, that implies `"error"=false`) Tools that consume OpenTracing instrumentation should not need to consider any other information to determine whether a Span is in an error state.
+
+#### Logged application-level errors
+
+It can also be useful to record application-level errors that crop up during a Span's lifetime. For those situations, Span logs are more appropriate since errors have a specific timestamp (and Spans in general represent a time interval, not a specific moment). Logged errors may be described by OpenTracing in different ways, largely depending on the language. Some of these descriptive fields are specific to errors; others are not (e.g., the `event` or `message` fields).
 
 For languages where an error object encapsulates a stack trace and type information, log the following fields:
 
@@ -80,3 +86,5 @@ For other languages, or when above is not feasible:
 - error.kind=`"..."` (optional)
 
 This scheme allows Tracer implementations to extract what information they need from the actual error object when it's available.
+
+**Note:** a Span may be in an error state (i.e., have an `"error"=true` tag) and have no error *logs*, and vice versa.
