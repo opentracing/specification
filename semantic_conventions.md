@@ -40,7 +40,7 @@ Every Span log has a specific timestamp (which must fall between the start and f
 | Span log field name | Type    | Notes and examples |
 |:--------------------|:--------|:-------------------|
 | `error.kind` | string | The type or "kind" of an error (only for `event="error"` logs). E.g., `"Exception"`, `"OSError"` |
-| `error.object` | object | For languages that support such a thing (e.g., Java, Python), the actual Throwable/Exception/Error object instance itself. E.g., A `java.lang.UnsupportedOperationException` instance, a python e`xceptions.NameError` instance |
+| `error.object` | object | For languages that support such a thing (e.g., Java, Python), the actual Throwable/Exception/Error object instance itself. E.g., A `java.lang.UnsupportedOperationException` instance, a python `exceptions.NameError` instance |
 | `event` | string | A stable identifier for some notable moment in the lifetime of a Span. For instance, a mutex lock acquisition or release or the sorts of lifetime events in a browser page load described in the [Performance.timing](https://developer.mozilla.org/en-US/docs/Web/API/PerformanceTiming) specification. E.g., from Zipkin, `"cs"`, `"sr"`, `"ss"`, or `"cr"`. Or, more generally, `"initialized"` or `"timed out"`. For errors, `"error"` |
 | `message` | string | A concise, human-readable, one-line message explaining the event. E.g., `"Could not connect to backend"`, `"Cache invalidation succeeded"` |
 | `stack` | string | A stack trace in platform-conventional format; may or may not pertain to an error. E.g., `"File \"example.py\", line 7, in \<module\>\ncaller()\nFile \"example.py\", line 5, in caller\ncallee()\nFile \"example.py\", line 2, in callee\nraise Exception(\"Yikes\")\n"` |
