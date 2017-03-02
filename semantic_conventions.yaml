@@ -8,10 +8,16 @@
 
 standard_tags:
     'component': string
+    'db.instance': string
+    'db.statement': string
+    'db.type': string
+    'db.user': string
     'error': bool
     'http.method': string
     'http.status_code': integer
     'http.url': string
+    'mom.destination': string
+    'mom.type': string
     'peer.hostname': string
     'peer.ipv4': string
     'peer.ipv6': string
@@ -19,14 +25,11 @@ standard_tags:
     'peer.service': string
     'sampling.priority': integer
     'span.kind': string
-    'db.type': string
-    'db.instance': string
-    'db.user': string
-    'db.statement': string
 
 standard_log_fields:
+    'error.kind': string
+    'error.object': object
     'event': string
     'message': string
     'stack': string
-    'error.object': object
-    'error.kind': string
+
