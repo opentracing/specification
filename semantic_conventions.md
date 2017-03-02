@@ -25,7 +25,7 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 | `http.method` | string | HTTP method of the request for the associated Span. E.g., `"GET"`, `"POST"` |
 | `http.status_code` | integer | HTTP response status code for the associated Span. E.g., 200, 503, 404 |
 | `http.url` | string | URL of the request being handled in this segment of the trace, in standard URI format. E.g., `"https://domain.net/path/to?resource=here"` |
-| `mom.destination` | string | An address at which messages can be exchanged. |
+| `mom.destination` | string | An address at which messages can be exchanged. E.g. A Kafka record has an associated `"topic name"` that can be extracted by the instrumented producer or consumer and stored using this tag. |
 | `mom.type` | string | Message destination type, e.g. `"topic"` or `"queue"`. |
 | `peer.hostname` | string | Remote hostname. E.g., `"opentracing.io"`, `"internal.dns.name"` |
 | `peer.ipv4` | string | Remote IPv4 address as a `.`-separated tuple. E.g., `"127.0.0.1"` |
