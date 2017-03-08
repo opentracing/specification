@@ -25,13 +25,14 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 | `http.method` | string | HTTP method of the request for the associated Span. E.g., `"GET"`, `"POST"` |
 | `http.status_code` | integer | HTTP response status code for the associated Span. E.g., 200, 503, 404 |
 | `http.url` | string | URL of the request being handled in this segment of the trace, in standard URI format. E.g., `"https://domain.net/path/to?resource=here"` |
+| `message_bus.destination` | string | An address at which messages can be exchanged. E.g. A Kafka record has an associated `"topic name"` that can be extracted by the instrumented producer or consumer and stored using this tag. |
 | `peer.hostname` | string | Remote hostname. E.g., `"opentracing.io"`, `"internal.dns.name"` |
 | `peer.ipv4` | string | Remote IPv4 address as a `.`-separated tuple. E.g., `"127.0.0.1"` |
 | `peer.ipv6` | string | Remote IPv6 address as a string of colon-separated 4-char hex tuples. E.g., `"2001:0db8:85a3:0000:0000:8a2e:0370:7334"` |
 | `peer.port` | integer | Remote port. E.g., `80` |
 | `peer.service` | string | Remote service name (for some unspecified definition of `"service"`). E.g., `"elasticsearch"`, `"a_custom_microservice"`, `"memcache"` |
 | `sampling.priority` | integer | If greater than 0, a hint to the Tracer to do its best to capture the trace. If 0, a hint to the trace to not-capture the trace. If absent, the Tracer should use its default sampling mechanism. |
-| `span.kind` | string | Either `"client"` or `"server"` for the appropriate roles in an RPC. |
+| `span.kind` | string | Either `"client"` or `"server"` for the appropriate roles in an RPC, and `"producer"` or `"consumer"` for the appropriate roles in a messaging scenario. |
 
 ### Log fields table
 
@@ -52,8 +53,17 @@ Every Span log has a specific timestamp (which must fall between the start and f
 The following Span tags combine to model RPCs:
 
 - `span.kind`: either `"client"` or `"server"`. It is important to provide this tag **at Span start time**, as it may affect internal ID generation.
-- `error`: whether the RPC ended in an error
 - `peer.hostname`, `peer.ipv4`, `peer.ipv6`, `peer.port`, `peer.service`: optional tags that describe the RPC peer (often in ways it cannot assess internally)
+
+### Message Bus
+
+A message bus is asynchronous, and therefore the relationship type used to link a Consumer Span and a Producer Span would be **Follows From** (see [References between Spans](./specification.md#references-between-spans) for more information on relationship types).
+
+The following Span tags combine to model message bus based communications:
+
+- `message_bus.destination`: as described in the table above
+- `span.kind`: either `"producer"` or `"consumer"`. It is important to provide this tag **at Span start time**, as it may affect internal ID generation.
+- `peer.hostname`, `peer.ipv4`, `peer.ipv6`, `peer.port`, `peer.service`: optional tags that describe the message bus broker (often in ways it cannot assess internally)
 
 ### Database (client) calls
 
