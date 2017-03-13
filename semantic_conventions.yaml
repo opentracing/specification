@@ -17,6 +17,7 @@ standard_tags:
     'http.status_code': integer
     'http.url': string
     'message_bus.destination': string
+    'peer.address': string
     'peer.hostname': string
     'peer.ipv4': string
     'peer.ipv6': string
