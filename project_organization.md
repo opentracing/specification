@@ -26,6 +26,8 @@ OTSC members have the following primary responsibilities:
 - Strategize around possible third-party package integrations
 - Weigh in and offer tie-breaking votes for issues where consensus among the larger community has proven elusive
 
+OTSC meetings agenda and minutes are recorded in [this Google document](https://docs.google.com/document/d/1Pc86BVWVGnldsdAtwDQLfMWEpO4ni4IHm0xaNQvnScI/).
+
 ## OpenTracing Industrial Advisory Board (OTIAB)
 
 OpenTracing has an **Industrial Advisory Board** (OTIAB) that comprises engineers with detailed knowledge of tracing technology at companies of different scales and software maturity. The OTSC members engage with the OTIAB on a periodic basis to gather feedback about successes, challenges, and open-source packages which would benefit from greater OpenTracing support.
