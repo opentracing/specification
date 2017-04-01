@@ -219,6 +219,8 @@ Optional parameters
 
 Note that the OpenTracing project documents certain **["standard log keys"](./semantic_conventions.md)** which have prescribed semantic meanings.
 
+- An integer, represents the log priority. If specified, it must be between 0(included) and 10(included). Higher priority means the log is more important.
+
 #### Set a **baggage** item
 
 Baggage items are key:value string pairs that apply to the given `Span`, its `SpanContext`, and **all `Spans` which directly or transitively _reference_ the local `Span`.** That is, baggage items propagate in-band along with the trace itself.
