@@ -18,7 +18,7 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 |:--------------|:-----|:-------------------|
 | `component` | string  | The software package, framework, library, or module that generated the associated Span. E.g., `"grpc"`, `"django"`, `"JDBI"`. |
 | `db.instance` | string | Database instance name. E.g., In java, if the jdbc.url=`"jdbc:mysql://127.0.0.1:3306/customers"`, the instance name is `"customers"`. |
-| `db.statement` | string | A database statement for the given database type. E.g., for `db.type="SQL"`, `"SELECT * FROM wuser_table"`; for `db.type="redis"`, `"SET mykey 'WuValue'"`. |
+| `db.statement` | string | A database statement for the given database type. E.g., for `db.type="sql"`, `"SELECT * FROM wuser_table"`; for `db.type="redis"`, `"SET mykey 'WuValue'"`. |
 | `db.type` | string | Database type. For any SQL database, `"sql"`. For others, the lower-case database category, e.g. `"cassandra"`, `"hbase"`, or `"redis"`. |
 | `db.user` | string | Username for accessing database. E.g., `"readonly_user"` or `"reporting_user"` |
 | `error` | bool | `true` if and only if the application considers the operation represented by the Span to have failed |
