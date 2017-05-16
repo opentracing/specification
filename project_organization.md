@@ -32,14 +32,22 @@ OTSC meetings agenda and minutes are recorded in [this Google document](https://
 
 OpenTracing has an **Industrial Advisory Board** (OTIAB) that comprises engineers with detailed knowledge of tracing technology at companies of different scales and software maturity. The OTSC members engage with the OTIAB on a periodic basis to gather feedback about successes, challenges, and open-source packages which would benefit from greater OpenTracing support.
 
+The current OpenTracing Industrial Advisory Board is as follows (in alphabetical order):
+
+- Brian Hanafee ([@bhanafee](https://github.com/bhanafee)): Wells Fargo
+- Bruce Wong ([@brucemwong](https://github.com/brucemwong)): Twilio
+- Dimitrios Kouzis-Loukas ([@lookfwd](https://github.com/lookfwd)): Bloomberg
+- Jonathan Mace ([@jonathanmace](https://github.com/jonathanmace)): Brown University / PivotTracing
+- Stephen Day ([@stevvooe](https://github.com/stevvooe)): Docker
+- Suman Karumuri ([@mansu](https://github.com/mansu)): Pinterest
+- 吴晟 (Wu Sheng) ([@wu-sheng](https://github.com/wu-sheng)): Huawei / SkyWalking
+
 OTIAB members have the following primary responsibilities:
 
 - Describe and rationalize tracing and observability challenges within their own companies: it is particularly important that they are regularly exposed to instrumentation, integration, and usability issues related to tracing, and further that they are able to effectively distill these concerns and communicate them back to the OTSC
 - Participate in periodic (but infrequent: monthly or less) calls with the OTSC
 - Provide feedback about possible priorities and/or specific proposals from the OTSC
 - Represent OpenTracing’s interests within their own organizations
-
-The initial list of OTIAB members will be announced in March 2017.
 
 ## Contributed OpenTracing Support
 
