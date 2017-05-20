@@ -16,6 +16,7 @@ A subset of these tracing system authors are part of the **OpenTracing Specifica
 
 - Bas van Beek ([@basvanbeek](https://github.com/basvanbeek)): Zipkin
 - Ben Sigelman ([@bhs](https://github.com/bensigelman)): LightStep
+- Chris Erway ([@cce](https://github.com/cce)): TraceView
 - Pavol Loffay ([@pavolloffay](https://github.com/pavolloffay)): Hawkular
 - Yuri Shkuro ([@yurishkuro](https://github.com/yurishkuro)): Jaeger
 
