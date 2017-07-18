@@ -38,6 +38,7 @@ The current OpenTracing Industrial Advisory Board is as follows (in alphabetical
 - Brian Hanafee ([@bhanafee](https://github.com/bhanafee)): Wells Fargo
 - Bruce Wong ([@brucemwong](https://github.com/brucemwong)): Twilio
 - Dimitrios Kouzis-Loukas ([@lookfwd](https://github.com/lookfwd)): Bloomberg
+- Jonathan Kaldor ([@jmkaldor](https://github.com/jmkaldor)): Facebook
 - Jonathan Mace ([@jonathanmace](https://github.com/jonathanmace)): Brown University / PivotTracing
 - Stephen Day ([@stevvooe](https://github.com/stevvooe)): Docker
 - Suman Karumuri ([@mansu](https://github.com/mansu)): Pinterest
