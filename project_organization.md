@@ -44,7 +44,6 @@ The current OpenTracing Industrial Advisory Board is as follows (in alphabetical
 - Suman Karumuri ([@mansu](https://github.com/mansu)): Pinterest
 - 吴晟 (Wu Sheng) ([@wu-sheng](https://github.com/wu-sheng)): Huawei / SkyWalking
 
-
 OTIAB members have the following primary responsibilities:
 
 - Describe and rationalize tracing and observability challenges within their own companies: it is particularly important that they are regularly exposed to instrumentation, integration, and usability issues related to tracing, and further that they are able to effectively distill these concerns and communicate them back to the OTSC
