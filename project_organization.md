@@ -12,11 +12,12 @@ OpenTracing's project organization makes room for each of these constituencies.
 
 The authors of any tracing or observability tool that supports OpenTracing are **always** invited to contribute to discussions about the future of OpenTracing as a standard. OpenTracing endeavors to maintain a list of such authors and will occasionally solicit feedback from that group.
 
-A subset of these tracing system authors are part of the **OpenTracing Specification Council** (OTSC). Said council members have write access across the [github.com/opentracing](https://github.com/opentracing) and [github.com/opentracing-contrib](https://github.com/opentracing-contrib) organizations (though other individuals may also have write access to specific repos within those organizations). Each OTSC member represents a tracing system which (a) maintains a public OpenTracing implementation, and (b) has substantial institutional support, and thus longevity. The current OpenTracing Specification Council is as follows (in alphabetical order):
+A subset of these tracing system authors are part of the **OpenTracing Specification Council** (OTSC). Said council members have write access across the [github.com/opentracing](https://github.com/opentracing) and [github.com/opentracing-contrib](https://github.com/opentracing-contrib) organizations (though other individuals may also have write access to specific repos within those organizations). Each OTSC member represents a tracing system which (a) maintains a public OpenTracing implementation, and (b) has substantial institutional support, and thus longevity. The current OpenTracing Specification Council is as follows (in alphabetical order by username):
 
 - Bas van Beek ([@basvanbeek](https://github.com/basvanbeek)): Zipkin
 - Ben Sigelman ([@bhs](https://github.com/bensigelman)): LightStep
 - Chris Erway ([@cce](https://github.com/cce)): TraceView
+- Erika Arnold ([@erabug](https://github.com/erabug)): New Relic
 - Pavol Loffay ([@pavolloffay](https://github.com/pavolloffay)): Hawkular
 - Yuri Shkuro ([@yurishkuro](https://github.com/yurishkuro)): Jaeger
 
