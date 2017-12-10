@@ -18,6 +18,7 @@ A subset of these tracing system authors are part of the **OpenTracing Specifica
 - Ben Sigelman ([@bhs](https://github.com/bensigelman)): LightStep
 - Chris Erway ([@cce](https://github.com/cce)): TraceView
 - Erika Arnold ([@erabug](https://github.com/erabug)): New Relic
+- Emanuele Palazzetti ([@palazzem](https://github.com/palazzem)): DataDog
 - Pavol Loffay ([@pavolloffay](https://github.com/pavolloffay)): Hawkular
 - Yuri Shkuro ([@yurishkuro](https://github.com/yurishkuro)): Jaeger
 
