@@ -21,6 +21,7 @@ A subset of these tracing system authors are part of the **OpenTracing Specifica
 - Erika Arnold ([@erabug](https://github.com/erabug)): New Relic
 - Emanuele Palazzetti ([@palazzem](https://github.com/palazzem)): DataDog
 - Pavol Loffay ([@pavolloffay](https://github.com/pavolloffay)): Hawkular
+- 吴晟 (Wu Sheng) ([@wu-sheng](https://github.com/wu-sheng)): SkyWalking
 - Yuri Shkuro ([@yurishkuro](https://github.com/yurishkuro)): Jaeger
 
 OTSC members have the following primary responsibilities:
@@ -45,7 +46,7 @@ The current OpenTracing Industrial Advisory Board is as follows (in alphabetical
 - Jonathan Mace ([@jonathanmace](https://github.com/jonathanmace)): Brown University / PivotTracing
 - Stephen Day ([@stevvooe](https://github.com/stevvooe)): Docker
 - Suman Karumuri ([@mansu](https://github.com/mansu)): Pinterest
-- 吴晟 (Wu Sheng) ([@wu-sheng](https://github.com/wu-sheng)): Huawei / SkyWalking
+- 吴晟 (Wu Sheng) ([@wu-sheng](https://github.com/wu-sheng)): Huawei
 
 OTIAB members have the following primary responsibilities:
 
