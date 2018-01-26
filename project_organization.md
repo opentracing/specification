@@ -55,6 +55,27 @@ OTIAB members have the following primary responsibilities:
 - Provide feedback about possible priorities and/or specific proposals from the OTSC
 - Represent OpenTracing’s interests within their own organizations
 
+## Documentation Working Group
+
+The OpenTracing community is growing rapidly, moving from a tight-knit group of early adopters to a larger group of developers. In order to support this transition, the Documentation Working Group is tasked with codifying the existing knowledge base into proper documentation which can be easily accessed via the OpenTracing website.
+
+### Documentation Projects
+- Project Overview
+- Cross-Language Specification
+- Tags
+- Language APIs
+- OpenTracing CookBook
+- Walkthroughs and Tutorials
+- FAQ
+- Index of Instrumentations
+- Guidelines for framework/library maintainers
+
+### Responsibilities
+- Schedule and attend Documentation Working Group sessions.
+- Maintain community guidelines for contributing documentation changes.
+- Setup and maintain documentation infrastructure.
+- Produce missing documentation.
+
 ## Contributed OpenTracing Support
 
 Repositories under [github.com/opentracing-contrib](https://github.com/opentracing-contrib) pertain to specific open-source software packages and projects. Each may have its own owners and internal policies regarding PRs, review requirements, and committer management. You can learn more about OpenTracing contributions via the [opentracing-contrib meta-repository](https://github.com/opentracing-contrib/meta).
