@@ -57,7 +57,7 @@ OTIAB members have the following primary responsibilities:
 
 ## OpenTracing Working Groups
 
-Working Group members meet at regularly to discuss and define the OpenTracing project structure, as well as perform day-to-day project management duties.
+Working Group members meet regularly to discuss and define the OpenTracing project structure, as well as perform day-to-day project management duties.
 
 ### Language Working Group
 
