@@ -59,21 +59,20 @@ OTIAB members have the following primary responsibilities:
 
 Working Group members meet regularly to discuss and define the OpenTracing project structure, as well as perform day-to-day project management duties.
 
-### Language Working Group
+### Cross-Language Working Group
 
-The Language Working Group manages the OpenTracing APIs and ecosystem. In order to handle the growing volume of contributions, this working groups is tasked with developing the protocols for proposing and submitting changes to the OpenTracing language APIs and instrumentation ecosystem. In addition, members of this Working Group triage the API and contrib backlogs, to ensure PRs and Issues are resolved in a timely manner.
+The Cross-Language Working Group manages the OpenTracing APIs and ecosystem. In order to handle the growing volume of contributions, this working groups is tasked with overseeing the development and maintenance of the OpenTracing language APIs and contributed instrumentation. 
 
-Any number of working group members are allowed; preferably two or more experts per language. Maintainers with overlapping responsibilities divide the work amongst themselves. PR and Issue standards are developed in a cross-language fashion. 
+Any number of working group members are allowed; preferably at least two or more experts per language. Members with overlapping responsibilities divide the work amongst themselves.
 
 #### Responsibilities
-- Schedule and attend Language Working Group sessions.
-- Manage backlogs for OT and OT-contrib repositories.
+- Participate in Cross-Language Working Group sessions.
 - Develop protocols for proposing and resolving Issues and Pull Requests.
-- Write activity summaries and versioning announcements.
-- Triage API and contrib backlogs.
+- Triage backlogs for API and OT-contrib repositories.
 - Actively participate in PR reviews.
-- Work with contrib maintainers to ensure instrumentations are not abandoned, have tags applied uniformly, and are well tested.
+- Work with OT-contrib maintainers to ensure instrumentations are not abandoned, have tags applied uniformly, and are well tested.
 - Ensure that APIs do not drift away from each other, or the core specification.
+- Inform the community with monthly activity summaries and versioning announcements.
 
 ## Contributed OpenTracing Support
 
