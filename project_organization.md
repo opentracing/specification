@@ -74,6 +74,27 @@ Any number of working group members are allowed; preferably at least two or more
 - Ensure that APIs do not drift away from each other, or the core specification.
 - Inform the community with monthly activity summaries and versioning announcements.
 
+### Documentation Working Group
+
+The Documentation Working Group codifies the existing knowledge base and maintains proper documentation as part of the OpenTracing website.
+
+#### Documentation Projects
+- Project Overview
+- Cross-Language Specification
+- Tags
+- Language APIs
+- OpenTracing CookBook
+- Walkthroughs and Tutorials
+- FAQ
+- Index of Instrumentations
+- Guidelines for framework/library maintainers
+
+#### Responsibilities
+- Schedule and attend Documentation Working Group sessions.
+- Maintain community guidelines for contributing documentation changes.
+- Setup and maintain documentation infrastructure.
+- Produce missing documentation.
+
 ## Contributed OpenTracing Support
 
 Repositories under [github.com/opentracing-contrib](https://github.com/opentracing-contrib) pertain to specific open-source software packages and projects. Each may have its own owners and internal policies regarding PRs, review requirements, and committer management. You can learn more about OpenTracing contributions via the [opentracing-contrib meta-repository](https://github.com/opentracing-contrib/meta).
