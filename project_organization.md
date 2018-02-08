@@ -57,7 +57,7 @@ OTIAB members have the following primary responsibilities:
 
 ## Documentation Working Group
 
-The OpenTracing community is growing rapidly, moving from a tight-knit group of early adopters to a larger group of developers. In order to support this transition, the Documentation Working Group is tasked with codifying the existing knowledge base into proper documentation which can be easily accessed via the OpenTracing website.
+The Documentation Working Group codifies the existing knowledge base and maintains proper documentation as part of the OpenTracing website.
 
 ### Documentation Projects
 - Project Overview
