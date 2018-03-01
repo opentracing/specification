@@ -14,5 +14,5 @@ All expected behavior should be documented, in sufficient detail such that langu
 # Use Cases
 Concrete use cases must be provided, in order to guide testing and interface design, and assist reviewers.
 
-# Risk Assesment
+# Risk Assessment
 Risks, backwards compatibility, and potential for inconsistency are addressed.
