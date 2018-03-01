@@ -4,7 +4,7 @@ The OpenTracing specification consists of a cross-language, abstract interface, 
 In order effect changes to the OpenTracing specification, all interfaces are developed together in a three step process:
 
 * DRAFT: An RFC is drafted to define and justify the desired changes.
-* TEST: A new version of each langauage interface is designed, tested, and released.
+* TEST: A new version of each language interface is designed, tested, and released.
 * ACCEPTED: The abstract interface is versioned to reflect the final changes.
 
 # Proposal Components
@@ -19,7 +19,7 @@ An RFC consists of the following:
 * Historical background.
 * Abstract interface.
 * Use cases.
-* Risk Assesment.
+* Risk Assessment.
 
 An RFC has the following qualities:
 
@@ -48,7 +48,7 @@ A complete release candidate consists of the following:
 * Repository branch containing the new version.
 * Packages for installing the new version.
 * Tracers which bind to the new version.
-* Major instrmentation ported to the new version.
+* Major instrumentation ported to the new version.
 
 # Proposal Lifecycle
 
@@ -78,6 +78,8 @@ Once the draft proposal is finalized, language implementation begins. Language m
 * RFC status changed from `Test` to `Accepted`.
 * Tracking issue for the proposal is closed.
 
-After a quorum of language interfaces have been tested and released, consensus may be reached that a proposal has been finalized. At this point, the abstract interface contained in the `specification.md` document is updated to reflect the final changes, based on the language in the RFC docment and release candidates.
+After a quorum of language interfaces have been tested and released, consensus may be reached that a proposal has been finalized. At this point, the abstract interface contained in the `specification.md` document is updated to reflect the final changes, based on the language in the RFC document and release candidates.
 
-In addition to the specification, the OpenTracing website and other major docmentation efforts are updated at this time to reflect the latest version. Once all work is complete, the tracking issue is closed.
+In addition to the specification, the OpenTracing website and other major documentation efforts are updated at this time to reflect the latest version. Once all work is complete, the tracking issue is closed.
+
+
