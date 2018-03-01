@@ -1,6 +1,5 @@
 # 0001: RFC_NAME
 
-**Updated:** January 01, 2018  
 **Current State:** Draft  
 **Author:** GITHUB_HANDLE
 
