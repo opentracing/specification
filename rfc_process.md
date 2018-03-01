@@ -25,7 +25,7 @@ An RFC has the following qualities:
 
 * The issue is clearly defined, and within the scope of the OpenTracing charter.
 * The utility to the OT community is illustrated with concrete use cases. It should be clear not only what will change, but how the new interface is expected to be used.
-* Changes to the abstract interface are clearly defined. Language-specific interfaces will be implemented in a later phase,but the abstract interface must be clear enough that the changes could be ported to many languages without much deviation.
+* Changes to the abstract interface are clearly defined. Language-specific interfaces will be implemented in a later phase, but the abstract interface must be clear enough that the changes could be ported to many languages without much deviation.
 * All expected behavior should be documented, in sufficient detail such that language-specific tests and examples can be generated from the descriptions.
 * Risks, backwards compatibility, and potential for inconsistency are addressed.
 
