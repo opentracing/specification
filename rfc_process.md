@@ -14,7 +14,7 @@ Proposals begin as a single document, written in markdown and committed to the `
 
 An RFC consists of the following:
 
-* Title, status, and author.
+* Proposal name, status, and author.
 * Problem statement.
 * Historical background.
 * Abstract interface.
@@ -34,9 +34,9 @@ Often, a proposal will consist of multiple artifacts, such as GitHub issues, pul
 
 A tracking issue consists of the following:
 
-* Title, status, and author.
-* Short description of the proposal.
-* A link to the committed RFC.
+* Proposal name, status, and author.
+* Short summary or proposal abstract.
+* A link to the RFC.
 * Lists of open issues, PRs, and upcoming deadlines.
 * Links to relevant artifacts, such as release candidates.
 * Links to meetings and other discussion channels.
