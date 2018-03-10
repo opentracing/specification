@@ -12,3 +12,7 @@ There are two important files in this repository:
 
 1. [`specification.md`](./specification.md), a versioned description of the current pan-language OpenTracing standard
 1. [`semantic_conventions.md`](./semantic_conventions.md), a document describing conventional Span tags and log keys for common semantic scenarios
+
+## License
+
+By contributing to OpenTracing Specification repository, you agree that your contributions will be licensed under its [Apache 2.0 License](https://github.com/opentracing/specification/blob/master/LICENSE).
