@@ -38,7 +38,7 @@ If the language supports some kind of auto finishing statement (such as `try` fo
 The `Tracer` interface will be extended with:
 
 * **scope manager**, the `ScopeManager` tracking the active `Span` for this instance.
-* **start active span**, a new behavior for starting a new `Span`, which will be automatically marked as active for the current call-context. It will return a `Scope`.
+* **start active span**, a new behavior for starting a new `Span`, which will be automatically marked as active for the current call-context. It will return a `Scope`. A parameter **finish span on close** will mark whether the `Scope` should, upon deactivation, **finish** the contained `Span`. A default value for this parameter may be provided, depending on the suitability for the language and its use cases.
 * Both **start span** and **start active span** will implicitly use any active `Span` as the parent for newly created `Span`s (with a `ChildOf` relationship), unless the parent is explicitly specified, or (the new) **ignore active span** parameter is specified (in which case the resulting `Span` will have no parent at all).
 
 # Use Cases
