@@ -21,7 +21,7 @@ New `ScopeManager` and `Scope` interfaces are added to the specification, and th
 
 The `ScopeManager` interface allows setting the active `Span` in a call-context storage section, and has the following members:
 
-* **activate**, capability to set the specified `Span` as the active one for the current call-context, returning a `Scope` containing it. A parameter (still to decide whether it will be optional or required) will mark whether the returned `Scope` should, upon deactivation, **finish** the contained `Span`.
+* **activate**, capability to set the specified `Span` as the active one for the current call-context, returning a `Scope` containing it. A required boolean parameter **finish span on close** will mark whether the returned `Scope` should, upon deactivation, **finish** the contained `Span`.
 * **active**, the `Scope` containing the current active `Span` if any, or else null/nothing.
 
 ## Scope
