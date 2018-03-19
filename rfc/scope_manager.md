@@ -29,7 +29,7 @@ The `ScopeManager` interface allows setting the active `Span` in a call-context 
 The `Scope` interface acts as a container of the active `Span` for the current-call context, and has the following members:
 
 * **span**, the contained active `Span` for this call-context. It will never be null/nothing.
-* **close**, marking the end of the active period for the current `Span`, and optionally **finishing** it. Calling it more tan once leads to undefined behavior.
+* **close**, marking the end of the active period for the current `Span`, and optionally **finishing** it. Calling it more than once leads to undefined behavior.
 
 If the language supports some kind of auto finishing statement (such as `try` for Java, or `with` for Python), `Scope` should adhere to such convention. Additionally, `Scope` is not guaranteed to be thread-safe.
 
