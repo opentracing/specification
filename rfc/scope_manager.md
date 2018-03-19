@@ -39,7 +39,7 @@ The `Tracer` interface will be extended with:
 
 * **scope manager**, the `ScopeManager` tracking the active `Span` for this instance.
 * **start active span**, a new behavior for starting a new `Span`, which will be automatically marked as active for the current call-context. It will return a `Scope`.
-* Both **start span** and **start active span** will implicitly use any active `Span` as the parent for newly created `Span`s (with a `ChildOf` relationship), unless the parent is explicitly specified, or (the new) **ignore parent span** parameter is specified (in which case the resulting `Span` will have no parent at all).
+* Both **start span** and **start active span** will implicitly use any active `Span` as the parent for newly created `Span`s (with a `ChildOf` relationship), unless the parent is explicitly specified, or (the new) **ignore active span** parameter is specified (in which case the resulting `Span` will have no parent at all).
 
 # Use Cases
 
