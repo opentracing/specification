@@ -1,4 +1,4 @@
-# 0002: SpanManager
+# Scope Manager
 
 **Current State:** Draft  
 **Author:** [carlosalberto](https://github.com/carlosalberto)
