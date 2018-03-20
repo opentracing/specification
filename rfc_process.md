@@ -65,7 +65,7 @@ Consensus is used to determine that all of the abstract proposal work has been c
 
 ## Test
 * RFC status changed from `Draft` to `Test`.
-* Release Candidate per major language is created.
+* Release Candidate per supported language is created.
 * API conventions are coordinated between languages.
 * New risks and ambiguities may lead to proposal changes.
 
