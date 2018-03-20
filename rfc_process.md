@@ -3,13 +3,13 @@ The OpenTracing specification consists of a cross-language, abstract interface, 
 
 In order effect changes to the OpenTracing specification, all interfaces are developed together in a three step process:
 
-* DRAFT: An RFC is drafted to define and justify the desired changes.
-* TEST: A new version of each language interface is designed, tested, and released.
-* ACCEPTED: The abstract interface is versioned to reflect the final changes.
+* **DRAFT:** An RFC is drafted to define and justify the desired changes.
+* **TEST:** A new version of each language interface is designed, tested, and released.
+* **ACCEPTED:** The abstract interface is versioned to reflect the final changes.
 
 # Proposal Components
 
-## RFC (Request for Change)
+## RFC (Request for Comments)
 Proposals begin as a single document, written in markdown and committed to the `/rfc` directory.
 
 An RFC consists of the following:
@@ -47,7 +47,7 @@ Each language interface implements the abstract interface contained in the RFC.
 A complete release candidate consists of the following:
 * Repository branch containing the new version.
 * Packages for installing the new version.
-* Tracers which bind to the new version.
+* More than one tracer which binds to the new version.
 * Major instrumentation ported to the new version.
 
 # Proposal Lifecycle
@@ -69,7 +69,9 @@ Consensus is used to determine that all of the abstract proposal work has been c
 * API conventions are coordinated between languages.
 * New risks and ambiguities may lead to proposal changes.
 
-Once the draft proposal is finalized, language implementation begins. Language maintainers begin creating a release candidate on a branch of the language repository. Links to the release candidates, along with their status, are recorded in the tracking issue.
+Once the draft proposal is finalized, language implementation begins. Language maintainers begin creating a release candidate on a branch of the language repository. Links to the release candidates, along with their status, are recorded in the tracking issue. Multiple tracers create a branch which is compatible with new API, along with important instrumentation libraries. These assest are then used to vet the new API, exploring edge cases and potential issues.
+
+At this stage, issues and further refinements are surfaced and debated via tested examples, as English often is too imprecise to address the finer points of API design.
 
 ## Accepted
 * Remaining language interfaces are released.
