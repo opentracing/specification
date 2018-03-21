@@ -9,9 +9,11 @@ Upon many iterations and feedback from several contributors, the Java 0.31 API d
 
 # Technical background
 
-For any thread, at most one **Span** may be "active". Of course there may be many other **Spans** involved with the thread which are (a) started, (b) not finished, and yet (c) not "active": perhaps they are waiting for I/O, blocked on a child **Span**, or otherwise off of the critical path.
- 
-It's inconvenient to pass an active **Span** from function to function manually, so OpenTracing should require that every **Tracer** contains a **Scope Manager** that grants access to the active **Span** through a container, called **Scope**.
+For any thread, at most one **Span** may be "active". Of course, there may be many other **Spans** involved with the thread which are (a) started, (b) not finished, and yet (c) not "active": perhaps they are waiting for I/O, blocked on a child **Span**, or otherwise off of the critical path.
+
+For platforms where the call-context is propagated down the execution chain -such as `Go`-, such context can be used to store the active **Span** at all times.
+
+For platforms not propagating the call-context, it's inconvenient to pass the active **Span** from function to function manually, so OpenTracing should require, for those platforms, that **Tracer** contains a **Scope Manager** that grants access to the active **Span** through a container, called **Scope** (using some call-context storage, such as thread-local or coroutine-local).
 
 # Specification Changes
 
