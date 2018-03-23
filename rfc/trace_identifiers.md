@@ -36,7 +36,7 @@ The `SpanContext` section of the specification is extended to include the follow
 | `TraceID` | string | Globally unique. Every span in a trace shares this ID. |
 | `SpanID` | string | Unique within a trace. Each span within a trace contains a different ID. |
 
-**String** values are used for identifiers. In this context, a string is defined as an immutable, variable length sequence of unicode characters. The empty string is a valid return type.
+**String** values are used for identifiers. In this context, a string is defined as an immutable, variable length sequence of characters. The empty string is a valid return type.
 
 A string is preferred over other formats for the following reasons:
 
@@ -84,3 +84,6 @@ Because the accessors produce a variable-width string value, new formats and wir
 Internally, tracers do not always use strings to represent their identifiers. So there is a conversion cost when using these accessors. 
 
 While a single allocation may be inevitable, exposing accessors in additional formats could be done to prevent double allocations while formatting the identifiers. For example, converting from a tracer’s native format to a string may trigger an allocation. If there are many systems which want to consume the identifier in a format which requires an allocation when converting from a string, a second allocation could occur.
+
+## Restrictions on Length and Formatting
+There may be some advantage in specifying a maximum length for an identifier, or restricting on the available character set. However, it is currently not clear what the correct value for these limits should be, or which use cases would benefit from applying them.
