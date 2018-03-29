@@ -171,7 +171,7 @@ Required parameters
 Both injection and extraction rely on an extensible **format** parameter that dictates the type of the associated "carrier" as well as how a `SpanContext` is encoded in that carrier. All of the following **format**s must be supported by all Tracer implementations.
 
 - **Text Map**: an arbitrary string-to-string map with an unrestricted character set for both keys and values
-- **HTTP Headers**: a string-to-string map with keys and values that are suitable for use in HTTP headers (a la [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4). In practice, since there is such "diversity" in the way that HTTP headers are treated in the wild, it is strongly recommended that Tracer implementations use a limited HTTP header key space and escape values conservatively.
+- **HTTP Headers**: a string-to-string map with keys and values that are suitable for use in HTTP headers (a la [RFC 7230](https://tools.ietf.org/html/rfc7230#section-3.2.4)). In practice, since there is such "diversity" in the way that HTTP headers are treated in the wild, it is strongly recommended that Tracer implementations use a limited HTTP header key space and escape values conservatively.
 - **Binary**: a (single) arbitrary binary blob representing a `SpanContext`
 
 ### `Span`
@@ -238,7 +238,7 @@ Required parameters
 
 - The **baggage key**, a string
 
-**Returns** the corresponding **baggage value**, xor some indication that such a value was missing.
+**Returns** either the corresponding **baggage value**, or some indication that such a value was missing.
 
 ### `SpanContext`
 
