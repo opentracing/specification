@@ -17,16 +17,16 @@ The `Trace-Parent` header contains the following fields: `version`, `trace-id`, 
 
 | field | format | description |
 | :---  | :---   | :---    |
-| `trace-id` | 16-byte array | The ID of the whole trace forest. If all bytes are 0, the `Trace-Parent` may be ignored. |
-| `span-id`  | 8-byte array  | The ID of the caller span (parent). If all bytes are 0, the `Trace-Parent` may be ignored. |
+| `trace-id` | 128-bit; 32HEXDIG | The ID of the whole trace forest. If all bytes are 0, the `Trace-Parent` may be ignored. |
+| `span-id`  | 64-bit; 16HEXDIG | The ID of the caller span (parent). If all bytes are 0, the `Trace-Parent` may be ignored. |
 
 ## B3 HTTP Headers
 The [B3 HTTP headers](https://github.com/openzipkin/b3-propagation) are widely adopted, mostly by Zipkin-like tracing systems. The B3 protocol includes `X-B3-TraceId` and `X-B3-SpanId` as required headers, which contain the `TraceId` and `SpanId` values, respectively.
 
 | field | format | description |
 | :---  | :---   | :---        |
-| `TraceId` | 64 or 128-bit | The ID of the trace. Every span in a trace shares this ID. |
-| `SpanId`  | 64-bit | Indicates the position of the current operation in the trace tree. The value may or may not be derived from the value of the `traceId`. |
+| `TraceId` | 64 or 128-bit; opaque | The ID of the trace. Every span in a trace shares this ID. |
+| `SpanId`  | 64-bit; opaque | Indicates the position of the current operation in the trace tree. The value may or may not be derived from the value of the `traceId`. |
 
 # Specification Changes
 The `SpanContext` section of the specification is extended to include the following properties:
