@@ -13,12 +13,12 @@ Before discussing changes to the OpenTracing specification, it’s worth reviewi
 ## Trace-Context HTTP Headers
 [Trace-Context HTTP headers](https://github.com/w3c/distributed-tracing) are in the process of being standardized via the w3c. The tracing community has voiced strong support in implementing these headers for use in tracing interop.
 
-The `TraceParent` header contains the following fields: `version`, `trace-id`, `span-id`, and `trace-options`.
+The `traceparent` header contains the following fields: `version`, `trace-id`, `span-id`, and `trace-options`.
 
 | field | format | description |
 | :---  | :---   | :---    |
-| `trace-id` | 128-bit; 32HEXDIG | The ID of the whole trace forest. If all bytes are 0, the `TraceParent` may be ignored. |
-| `span-id`  | 64-bit; 16HEXDIG | The ID of the caller span (parent). If all bytes are 0, the `TraceParent` may be ignored. |
+| `trace-id` | 128-bit; 32HEXDIG | The ID of the whole trace forest. If all bytes are 0, the `traceparent` may be ignored. |
+| `span-id`  | 64-bit; 16HEXDIG | The ID of the caller span (parent). If all bytes are 0, the `Traceparent` may be ignored. |
 
 ## B3 HTTP Headers
 The [B3 HTTP headers](https://github.com/openzipkin/b3-propagation) are widely adopted, mostly by Zipkin-like tracing systems. The B3 protocol includes `X-B3-TraceId` and `X-B3-SpanId` as required headers, which contain the `TraceId` and `SpanId` values, respectively.
