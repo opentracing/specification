@@ -13,7 +13,7 @@ Before discussing changes to the OpenTracing specification, it’s worth reviewi
 ## Trace-Context HTTP Headers
 [Trace-Context HTTP headers](https://github.com/w3c/distributed-tracing) are in the process of being standardized via the w3c. The tracing community has voiced strong support in implementing these headers for use in tracing interop.
 
-The `Trace-Parent` header contains the following fields: `version`, `trace-id`, `span-id`, and `trace-options`.
+The `Traceparent` header contains the following fields: `version`, `trace-id`, `span-id`, and `trace-options`.
 
 | field | format | description |
 | :---  | :---   | :---    |
