@@ -31,8 +31,9 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 | `peer.ipv4` | string | Remote IPv4 address as a `.`-separated tuple. E.g., `"127.0.0.1"` |
 | `peer.ipv6` | string | Remote IPv6 address as a string of colon-separated 4-char hex tuples. E.g., `"2001:0db8:85a3:0000:0000:8a2e:0370:7334"` |
 | `peer.port` | integer | Remote port. E.g., `80` |
-| `peer.service` | string | Remote service name (for some unspecified definition of `"service"`). E.g., `"elasticsearch"`, `"a_custom_microservice"`, `"memcache"` |
+| `peer.service` | string | Remote service name (for some unspecified definition of `"service"`). E.g., `"elasticsearch"`, `"a_custom_microservice"`, `"memcache"`. Should correspond with values set in `service`. |
 | `sampling.priority` | integer | If greater than 0, a hint to the Tracer to do its best to capture the trace. If 0, a hint to the trace to not-capture the trace. If absent, the Tracer should use its default sampling mechanism. |
+| `service` | string  | The name of the current service. E.g., `"elasticsearch"`, `"a_custom_microservice"`, `"memcache"`. Should correspond with values set in `peer.service`. |
 | `span.kind` | string | Either `"client"` or `"server"` for the appropriate roles in an RPC, and `"producer"` or `"consumer"` for the appropriate roles in a messaging scenario. |
 
 ### Log fields table

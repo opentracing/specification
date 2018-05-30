@@ -24,6 +24,7 @@ standard_tags:
     'peer.port': integer
     'peer.service': string
     'sampling.priority': integer
+    'service': string
     'span.kind': string
 
 standard_log_fields:

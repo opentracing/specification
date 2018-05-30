@@ -1,5 +1,9 @@
 # History
 
+## 1.2 (2018/05/30)
+
+- Added service tag
+
 ## 1.1 (2017/03/19)
 
 - Added message bus tags
