@@ -117,15 +117,29 @@ These can all be valid timing diagrams for children that "FollowFrom" a parent.
 
 ## The OpenTracing API
 
-There are three critical and inter-related types in the OpenTracing specification: `Tracer`, `Span`, and `SpanContext`. Below, we go through the behaviors of each type; roughly speaking, each behavior becomes a "method" in a typical programming language, though it may actually be a set of related sibling methods due to type overloading and so on.
+There are three critical and inter-related types in the OpenTracing specification: `Tracer`, `Span`, and `SpanContext`, as well as two optional helper types: `ScopeManager` and `Scope`. Below, we go through the behaviors of each type; roughly speaking, each behavior becomes a "method" in a typical programming language, though it may actually be a set of related sibling methods due to type overloading and so on.
 
 When we discuss "optional" parameters, it is understood that different languages have different ways to construe such concepts. For example, in Go we might use the "functional Options" idiom, whereas in Java we might use a builder pattern.
 
+### Within-process `Span` propagation
+
+For any thread or execution unit, at most one `Span` may be active, and it is important that such `Span` is available at any point down the execution chain, in order to define proper **Reference** relationships among `Span`s.
+
+For platforms where the call-context is explicitly propagated down the execution chain -such as `Go`-, such context can be used to store the active `Span` at all times.
+
+For platforms not propagating a call-context, it is inconvenient to pass the active `Span` from function to function manually. For those platforms, the `Tracer` interface must contain a `ScopeManager` instance that stores and handles the active `Span` through a container interface, called `Scope`.
+
 ### `Tracer`
 
-The `Tracer` interface creates `Span`s and understands how to `Inject`
-(serialize) and `Extract` (deserialize) them across process boundaries.
+The `Tracer` interface creates `Span`s, understands how to `Inject`
+(serialize) and `Extract` (deserialize) them across process boundaries, and optionally contains a `ScopeManager` instance to handle the active `Span`.
 Formally, it has the following capabilities:
+
+#### Retrieve the `ScopeManager` (Optional)
+
+There should be no parameters.
+
+**Returns** the used `ScopeManager` instance to set and retrieve the active `Span`. The mentioned active instance is additinaly used by default as the implicit parent for newly created `Span`s, in case no **references** were provided.
 
 #### Start a new `Span`
 
@@ -144,10 +158,23 @@ For example, here are potential **operation names** for a `Span` that gets hypot
 Optional parameters
 
 - Zero or more **references** to related `SpanContext`s, including a shorthand for `ChildOf` and `FollowsFrom` reference types if possible.
+- An optional explicit **ignore active Span** boolean specifying whether the active `Span` should be ignored and not used as the implicit parent, in case no **references** were provided.
 - An optional explicit **start timestamp**; if omitted, the current walltime is used by default
 - Zero or more **tags**
 
 **Returns** a `Span` instance that's already started (but not `Finish`ed)
+
+#### Start a `Scope` with a new `Span` (Optional)
+
+This operation does the same as **Start a new `Span`**, in addition to setting the newly created `Span` as the active instance for the current thread or execution unit through the contained `ScopeManager` instance.
+
+It is **highly** encouraged that the name for this operation includes a `Scope` sufix, in order to make clear the type of the returned instance.
+
+Parameters are the same as **Start a new Span**, with the addition of:
+
+- A **finish Span on close** boolean specifying whether the contained `Span` should be closed upon `Scope` being `Close`d. This is a special parameter that can be either required or optional (along with a default value), depending on the specific needs of the platform.
+
+**Returns** a `Scope` instance containing a `Span` instance that's already started (but not `Finish`ed).
 
 #### Inject a `SpanContext` into a carrier
 
@@ -249,6 +276,46 @@ In OpenTracing we force `SpanContext` instances to be **immutable** in order to 
 #### Iterate through all baggage items
 
 This is modeled in different ways depending on the language, but semantically the caller should be able to efficiently iterate through all baggage items in one pass given a `SpanContext` instance.
+
+### `ScopeManager`
+
+The `ScopeManager` interface sets and retrieves the active `Span`, working along the `Scope` container interface.
+Formally, it has the following capabilities:
+
+#### Activate a `Span`
+
+Prior to setting a provided `Span` as active for the current thread or execution unit, the previously active instance needs to be stashed away, so it can be restored afterwards.
+
+Required parameters
+
+- **span**, the `Span` instance to be set as active.
+- **finish Span on close**, a boolean value specifying whether the `Span` should be `Finish`ed upon being deactivated through its container `Scope` being `Close`d.
+
+**Returns** a `Scope` instance containing the newly activated `Span`.
+
+#### Retrieve the active `Span`
+
+There should be no parameters.
+
+**Returns** a `Scope` instance containing the active `Span`, or else `null` if there's none for the current thread or execution unit.
+
+### `Scope`
+
+The `Scope` interface acts as a simple container for the active `Span`,and it not guaranteed to be thread-safe. It has the following capabilities:
+
+#### Retrieve the contained `Span`
+
+There should be no parameters.
+
+**Returns** the contained `Span`. The returned value can never be `null`.
+
+#### Close the `Scope`
+
+Closing the `Scope` will make its contained `Span` stop being the currently active instance for the thread or execution unit, optionally `Finish`ing it depending on the **finish Span on close** parameter that was provided during activation.
+
+If the `Scope` instance being `Close`d does not correspond to the actually active one, no action will be performed. An additional side effect will be restoring the previously active `Span` instance along with its `Scope` container.
+
+There should be no parameters.
 
 ### `NoopTracer`
 

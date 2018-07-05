@@ -1,6 +1,6 @@
 # Scope Manager
 
-**Current State:** Draft  
+**Current State:** Test
 **Author:** [carlosalberto](https://github.com/carlosalberto)
 
 In the OpenTracing specification, under the "Optional API Elements" section, it is mentioned languages may choose to provide utilities to pass an active **Span** around a single process.
