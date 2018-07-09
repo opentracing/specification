@@ -19,6 +19,7 @@ The `traceparent` header contains the following fields: `version`, `trace-id`, `
 | :---  | :---   | :---    |
 | `trace-id` | 128-bit; 32HEXDIG | The ID of the whole trace forest. If all bytes are 0, the `traceparent` may be ignored. |
 | `span-id`  | 64-bit; 16HEXDIG | The ID of the caller span (parent). If all bytes are 0, the `Traceparent` may be ignored. |
+| `trace-options` | 8-bit; 2HEXDIG | An 8-bit field that controls tracing options such as sampling, trace level etc. These flags are recommendations given by the caller rather than strict rules to follow. Currently only one bit is used. |
 
 ## B3 HTTP Headers
 The [B3 HTTP headers](https://github.com/openzipkin/b3-propagation) are widely adopted, mostly by Zipkin-like tracing systems. The B3 protocol includes `X-B3-TraceId` and `X-B3-SpanId` as required headers, which contain the `TraceId` and `SpanId` values, respectively.
