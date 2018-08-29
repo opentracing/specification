@@ -10,8 +10,11 @@ Historically this activity took place on the docs repo ([github.com/opentracing/
 
 There are two important files in this repository:
 
-1. [`specification.md`](./specification.md), a versioned description of the current pan-language OpenTracing standard
-1. [`semantic_conventions.md`](./semantic_conventions.md), a document describing conventional Span tags and log keys for common semantic scenarios
+### Specification
+[`specification.md`](./specification.md), a versioned description of the current pan-language OpenTracing standard
+
+### Semantic Conventions
+[`semantic_conventions.md`](./semantic_conventions.md), a document describing conventional Span tags and log keys for common semantic scenarios
 
 ## License
 
