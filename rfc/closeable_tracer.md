@@ -14,9 +14,7 @@ Discussions (See [this thread](https://github.com/opentracing/opentracing-java/i
 # Specification Changes
 The `Tracer` interface is extended with the following:
 
-* **Close**, a method that is responsible for closing the active tracer. A `Tracer` that has been closed should not be able to record any new spans. For `Tracer`s that record `Span`s for persistance, calling **Close** should flush the current in-memory collection to the configured persistance store. In the event that there is no logical justfication for this method on an implementing `Tracer`, it can be considered a NoOp other than setting the **isClosed** property.
-
-* **isClosed**, a boolean property that indicates that the `Tracer` has been closed. If this is **true** it indicates no further `Span`s should be written to this `Tracer`. 
+* **Close**, a method that is responsible for closing the active tracer. A `Tracer` that has been closed should not be able to record any new spans. For `Tracer`s that record `Span`s for persistance, calling **Close** should flush the current in-memory collection to the configured persistance store. For stateless `Tracer`s or similar, this can be a NoOp. The **Close** method should be considered idempotent; closing an already closed `Tracer` should not emit an error.
 
 # Use Cases
 The primary use case of this enhancement would be to reduce vendor-specific code for developers who are adding OpenTracing to their code. In lieu of having to perform potentially unsafe casts of a `Tracer` to access it's implementation-specific `Close` method, the interface would ensure that it was available regardless.
