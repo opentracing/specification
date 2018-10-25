@@ -22,6 +22,9 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 | `db.type` | string | Database type. For any SQL database, `"sql"`. For others, the lower-case database category, e.g. `"cassandra"`, `"hbase"`, or `"redis"`. |
 | `db.user` | string | Username for accessing database. E.g., `"readonly_user"` or `"reporting_user"` |
 | `error` | bool | `true` if and only if the application considers the operation represented by the Span to have failed |
+| `graphql.operation` | string | The type of graphql query operation for the associated Span. E.g., `"query"`, `"mutation"`, `"subscription"` |
+| `graphql.operation_name` | string | The name of graphql query operation for the associated Span. E.g., given `query FindFsers { users { name } }` then the operation name is `"FindUsers"` |
+| `graphql.query` | string | The text of graphql query for the associated Span. E.g., `"query"`, `"mutation"`, `"subscription"` |
 | `http.method` | string | HTTP method of the request for the associated Span. E.g., `"GET"`, `"POST"` |
 | `http.status_code` | integer | HTTP response status code for the associated Span. E.g., 200, 503, 404 |
 | `http.url` | string | URL of the request being handled in this segment of the trace, in standard URI format. E.g., `"https://domain.net/path/to?resource=here"` |
