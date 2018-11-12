@@ -3,7 +3,7 @@
 **Current State:** Draft 
 **Author:** [tedsuo](https://github.com/tedsuo)
 
-The OpenTracing SpanContext interface is extended to include `SpanID` and `TraceID` accessors. 
+The OpenTracing `SpanContext` interface is extended to include `ToSpanID` and `ToTraceID` accessors. 
 
 The OpenTracing model of computation specifies two primary object types, `Spans` and `Traces`, but does not specify identifiers for these objects. Identifiers for the two primary object types make it easier to correlate tracing data with data in other systems, simplify important tasks, and allow the creation of reusable trace observers. Some use cases are detailed below.
 
@@ -33,8 +33,8 @@ The `SpanContext` section of the specification is extended to include the follow
 
 | method | format | description |
 | :---  | :---   | :---        |
-| `TraceID` | string | Globally unique. Every span in a trace shares this ID. |
-| `SpanID` | string | Unique within a trace. Each span within a trace contains a different ID. |
+| `ToTraceID` | string | Globally unique. Every span in a trace shares this ID. |
+| `ToSpanID` | string | Unique within a trace. Each span within a trace contains a different ID. |
 
 **String** values are used for identifiers. In this context, a string is defined as an immutable, variable length sequence of characters. The empty string is a valid return type.
 
@@ -44,10 +44,18 @@ A string is preferred over other formats for the following reasons:
 * Backwards compatibility with pre-existing ID formats.
 * Strongly supported across many languages, and commonly used for transferring data between independent subsystems.
 
-## Alternate Formats
-In some cases, additional formats may be appropriate, if a language supports multiple common transport formats. Rather than manually converting the string value to another format, an additional accessors could be added to allow the tracer to do the conversion.
+## Why `ToTraceID` instead of `TraceID`?
 
-If tracing systems converge on common in-memory formats for Trace-Context identifiers, accessors may be added for those formats as well.
+The method names `ToTraceID` and `ToSpanID` were chosen over `TraceID` and `SpanID` for two reasons:
+
+1) To avoid conflicts with tracer implementations, which often use `TraceID` and `SpanID` to expose their identifiers in their native format.
+2) To communicate to the user that a format conversion may be occuring, and thus there may be some cost to calling these methods.
+
+## Future Formats
+In some cases, additional identifier formats may be added, besides `string`. Two reasons for additional formats were identified:
+
+1) Avoiding double converstions. Rather than converting from a native format to a string value, and then directly into another format, an additional method could be added to allow the tracer to do the conversion directly. For example, using identifiers as byte arrays may turn out to be popular, and may incur an extra conversion cost from string.
+2) If tracing systems converge on a common trace propagation format, such as [Trace-Context](https://github.com/w3c/trace-context), accessors may be added for that format as well.
 
 ## Backwards Compatibility and Optional Support
 The OpenTracing specification does not currently require trace and span identifiers. To continue support for existing tracers, the empty string value can be returned when no ID has been set.
