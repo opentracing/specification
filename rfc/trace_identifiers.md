@@ -54,7 +54,7 @@ The method names `ToTraceID` and `ToSpanID` were chosen over `TraceID` and `Span
 ## Future Formats
 In some cases, additional formats may be appropriate, if a language supports multiple common transport formats. Two reasons for additional formats were identified:
 
-1) Avoiding double converstions. Rather than converting from a native format to a string value, and then directly into another format, an additional methods could be added to allow the tracer to do the conversion directly.
+1) Avoiding double converstions. Rather than converting from a native format to a string value, and then directly into another format, an additional method could be added to allow the tracer to do the conversion directly.
 2) If tracing systems converge on common in-memory formats for Trace-Context identifiers, accessors may be added for those formats as well.
 
 ## Backwards Compatibility and Optional Support
