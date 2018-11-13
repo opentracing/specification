@@ -139,7 +139,7 @@ Formally, it has the following capabilities:
 
 There should be no parameters.
 
-**Returns** the used `ScopeManager` instance to set and retrieve the active `Span`. The mentioned active instance is additinaly used by default as the implicit parent for newly created `Span`s, in case no **references** were provided.
+**Returns** the used `ScopeManager` instance to set and retrieve the active `Scope` and `Span`. The mentioned active instance is additinaly used by default as the implicit parent for newly created `Span`s, in case no **references** were provided.
 
 #### Start a new `Span`
 
@@ -168,7 +168,7 @@ Optional parameters
 
 This operation does the same as **Start a new `Span`**, in addition to setting the newly created `Span` as the active instance for the current thread or execution unit through the contained `ScopeManager` instance.
 
-It is **highly** encouraged that the name for this operation includes a `Scope` sufix, in order to make clear the type of the returned instance.
+It is **highly** encouraged that language implementations (methods or fields) of this operation include a `Scope` suffix, in order to make clear the type of the returned instance.
 
 Parameters are the same as **Start a new Span**, with the addition of:
 
@@ -279,7 +279,7 @@ This is modeled in different ways depending on the language, but semantically th
 
 ### `ScopeManager`
 
-The `ScopeManager` interface sets and retrieves the active `Span`, working along the `Scope` container interface.
+The `ScopeManager` interface sets and retrieves the active `Scope` and `Span`.
 Formally, it has the following capabilities:
 
 #### Activate a `Span`
@@ -301,7 +301,7 @@ There should be no parameters.
 
 ### `Scope`
 
-The `Scope` interface acts as a simple container for the active `Span`,and it not guaranteed to be thread-safe. It has the following capabilities:
+The `Scope` interface acts as a simple container for the active `Span`,and it is not guaranteed to be thread-safe. It has the following capabilities:
 
 #### Retrieve the contained `Span`
 
