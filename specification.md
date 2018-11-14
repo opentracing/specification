@@ -127,7 +127,7 @@ For any thread or execution unit, at most one `Span` may be active, and it is im
 
 For platforms where the call-context is explicitly propagated down the execution chain -such as `Go`-, such context can be used to store the active `Span` at all times.
 
-For platforms not propagating a call-context, it is inconvenient to pass the active `Span` from function to function manually. For those platforms, the `Tracer` interface must contain a `ScopeManager` instance that stores and handles the active `Span` through a container interface, called `Scope`.
+For platforms not propagating a call-context, it is inconvenient to pass the active `Span` from function to function manually. For those platforms, the `Tracer` interface must contain a `ScopeManager` instance that stores and handles the active `Span` with the help of the `Scope` interface to end its active period.
 
 ### `Tracer`
 
@@ -139,7 +139,7 @@ Formally, it has the following capabilities:
 
 There should be no parameters.
 
-**Returns** the used `ScopeManager` instance to set and retrieve the active `Scope` and `Span`. The mentioned active instance is additinaly used by default as the implicit parent for newly created `Span`s, in case no **references** were provided.
+**Returns** the used `ScopeManager` instance to set and retrieve the active `Span` and its corresponding `Scope`. The mentioned active instance is additionally used by default as the implicit parent for newly created `Span`s, in case no **references** were provided.
 
 #### Start a new `Span`
 
@@ -174,7 +174,9 @@ Parameters are the same as **Start a new Span**, with the addition of:
 
 - A **finish Span on close** boolean specifying whether the contained `Span` should be closed upon `Scope` being `Close`d. This is a special parameter that can be either required or optional (along with a default value), depending on the specific needs of the platform.
 
-**Returns** a `Scope` instance containing a `Span` instance that's already started (but not `Finish`ed).
+**Returns** a `Scope` instance corresponding to the `Span` that was started (but not `Finish`ed).
+
+Note: This operation is defined as optional, and its existence will depend on its suitability for the thread model, language semantics, API guidelines and other considerations for every given language.
 
 #### Inject a `SpanContext` into a carrier
 
@@ -279,7 +281,7 @@ This is modeled in different ways depending on the language, but semantically th
 
 ### `ScopeManager`
 
-The `ScopeManager` interface sets and retrieves the active `Scope` and `Span`.
+The `ScopeManager` interface sets and retrieves the active `Span` and its corresponding `Scope`.
 Formally, it has the following capabilities:
 
 #### Activate a `Span`
@@ -289,33 +291,44 @@ Prior to setting a provided `Span` as active for the current thread or execution
 Required parameters
 
 - **span**, the `Span` instance to be set as active.
-- **finish Span on close**, a boolean value specifying whether the `Span` should be `Finish`ed upon being deactivated through its container `Scope` being `Close`d.
+- **finish Span on close** (optional feature), a boolean value specifying whether the `Span` should be `Finish`ed upon being deactivated through its container `Scope` being `Close`d.
+  Note: This feature is defined as optional, and its existence will depend on its suitability for the thread model, language semantics, API guidelines and other considerations for every given language.
 
-**Returns** a `Scope` instance containing the newly activated `Span`.
+**Returns** a `Scope` instance corresponding to the newly activated `Span`.
 
 #### Retrieve the active `Span`
 
 There should be no parameters.
 
-**Returns** a `Scope` instance containing the active `Span`, or else `null` if there's none for the current thread or execution unit.
+**Returns** the active `Span` instance, or else `null` if there's none for the current thread or execution unit.
+
+#### Retrieve the active `Scope`
+
+There should be no parameters.
+
+**Returns** a `Scope` instance corresponding to the active `Span`, or else `null` if there's no active `Span` for the current thread or execution unit.
 
 ### `Scope`
 
-The `Scope` interface acts as a simple container for the active `Span`,and it is not guaranteed to be thread-safe. It has the following capabilities:
+The `Scope` interface is used to end the active period for a given `Span`,and it is not guaranteed to be thread-safe. It has the following capabilities:
 
-#### Retrieve the contained `Span`
+#### Retrieve the `Span` (optional)
 
 There should be no parameters.
 
-**Returns** the contained `Span`. The returned value can never be `null`.
+**Returns** its corresponding `Span`. The returned value can never be `null`.
+
+Note: This operation is defined as optional, and its existence will depend on its suitability for the thread model, language semantics, API guidelines and other considerations for every given language.
 
 #### Close the `Scope`
 
-Closing the `Scope` will make its contained `Span` stop being the currently active instance for the thread or execution unit, optionally `Finish`ing it depending on the **finish Span on close** parameter that was provided during activation.
+Closing the `Scope` will make its corresponding `Span` stop being the currently active instance for the thread or execution unit.
 
-If the `Scope` instance being `Close`d does not correspond to the actually active one, no action will be performed. An additional side effect will be restoring the previously active `Span` instance along with its `Scope` container.
+If the `Scope` instance being `Close`d does not correspond to the actually active one, **no action** will be performed. An additional side effect will be restoring the previously active `Span` instance along with its corresponding `Scope` instance.
 
 There should be no parameters.
+
+**`Finish`ing the `Span`** is defined as an optional feature. Depending on a **finish Span on close** parameter that might have been provided during activation, its corresponding `Span` will be `Finish`ed. Note: This feature is defined as optional, and its existence will depend on its suitability for the thread model, language semantics, API guidelines and other considerations for every given language.
 
 ### `NoopTracer`
 

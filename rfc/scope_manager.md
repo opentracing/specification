@@ -23,15 +23,17 @@ New `ScopeManager` and `Scope` interfaces are added to the specification, and th
 
 The `ScopeManager` interface allows setting the active `Span` in a call-context storage section, and has the following members:
 
-* **activate**, capability to set the specified `Span` as the active one for the current call-context, returning a `Scope` containing it. A required boolean parameter **finish span on close** will mark whether the returned `Scope` should, upon deactivation, **finish** the contained `Span`.
-* **active**, the `Scope` containing the current active `Span` if any, or else null/nothing.
+* **activate**, capability to set the specified `Span` as the active one for the current call-context, returning a `Scope` to later end its active period.
+  An **optional** feature to optionally **finish** the `Span` upon `Scope` deactivation may be provided, depending on its suitability for the language. It would require a boolean parameter **finish span on close**.
+* **active Span**, the `Span` that is currently active, if any, or else null/nothing.
+* **active**, the corresponding `Scope` for the current active `Span` if any, or else null/nothing.
 
 ## Scope
 
 The `Scope` interface acts as a container of the active `Span` for the current-call context, and has the following members:
 
-* **span**, the contained active `Span` for this call-context. It will never be null/nothing.
 * **close**, marking the end of the active period for the current `Span`, and optionally **finishing** it. Calling it more than once leads to undefined behavior.
+* **span** (optional), the related active `Span` for this call-context, depending on its suitability for the language. It will never be null/nothing.
 
 If the language supports some kind of auto finishing statement (such as `try` for Java, or `with` for Python), `Scope` should adhere to such convention. Additionally, `Scope` is not guaranteed to be thread-safe.
 
@@ -40,7 +42,8 @@ If the language supports some kind of auto finishing statement (such as `try` fo
 The `Tracer` interface will be extended with:
 
 * **scope manager**, the `ScopeManager` tracking the active `Span` for this instance.
-* **start active span**, a new behavior for starting a new `Span`, which will be automatically marked as active for the current call-context. It will return a `Scope`. A parameter **finish span on close** will mark whether the `Scope` should, upon deactivation, **finish** the contained `Span`. A default value for this parameter may be provided, depending on the suitability for the language and its use cases.
+* **start active span** (optional), a new behavior for starting a new `Span`, which will be automatically marked as active for the current call-context. It will return a `Scope`.
+  An **optional** feature to optionally finish `Span` upon `Scope` deactivation may be provided, depending on its suitability for the language. It would require a boolean parameter **finish span on close**. A default value for this parameter may be provided, depending again on the suitability for the language and its use cases.
 * Both **start span** and **start active span** will implicitly use any active `Span` as the parent for newly created `Span`s (with a `ChildOf` relationship), unless the parent is explicitly specified, or (the new) **ignore active span** parameter is specified (in which case the resulting `Span` will have no parent at all).
 
 # Use Cases
