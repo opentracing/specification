@@ -1,5 +1,10 @@
 # History
 
+
+## 2.0 (2018/12/05)
+
+- Removed service tag added in 1.2 - to be replaced with a proper API. (see https://github.com/opentracing/specification/issues/131)
+
 ## 1.2 (2018/05/30)
 
 - Added service tag

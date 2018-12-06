@@ -31,9 +31,8 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 | `peer.ipv4` | string | Remote IPv4 address as a `.`-separated tuple. E.g., `"127.0.0.1"` |
 | `peer.ipv6` | string | Remote IPv6 address as a string of colon-separated 4-char hex tuples. E.g., `"2001:0db8:85a3:0000:0000:8a2e:0370:7334"` |
 | `peer.port` | integer | Remote port. E.g., `80` |
-| `peer.service` | string | Remote service name (for some unspecified definition of `"service"`). E.g., `"elasticsearch"`, `"a_custom_microservice"`, `"memcache"`. Meaning should correspond with values set in `service`. |
+| `peer.service` | string | Remote service name (for some unspecified definition of `"service"`). E.g., `"elasticsearch"`, `"a_custom_microservice"`, `"memcache"` |
 | `sampling.priority` | integer | If greater than 0, a hint to the Tracer to do its best to capture the trace. If 0, a hint to the trace to not-capture the trace. If absent, the Tracer should use its default sampling mechanism. |
-| `service` | string  | The service name for a span, which overrides any default "service name" property defined in a tracer's config. The meaning of `service` should correspond to the value set in `peer.service`, except it is applied to the current span. This tag is meant to only be used when a tracer is reporting spans on behalf of another service (for example, a service mesh reporting on behalf of the services it is proxying, or an out-of-band reporter which reads in log files). This tag does not need to be used when reporting spans for the service the tracer is running in. |
 | `span.kind` | string | Either `"client"` or `"server"` for the appropriate roles in an RPC, and `"producer"` or `"consumer"` for the appropriate roles in a messaging scenario. |
 
 ### Log fields table
