@@ -18,6 +18,7 @@ Span tags apply to **the entire Span**; as such, they apply to the entire timera
 |:--------------|:-----|:-------------------|
 | `component` | string  | The software package, framework, library, or module that generated the associated Span. E.g., `"grpc"`, `"django"`, `"JDBI"`. |
 | `db.instance` | string | Database instance name. E.g., In java, if the jdbc.url=`"jdbc:mysql://127.0.0.1:3306/customers"`, the instance name is `"customers"`. |
+| `db.collection` | string | Database collection name. E.g., for MongoDB this is the collection. For a SQL database, this is the name of the table. |
 | `db.statement` | string | A database statement for the given database type. E.g., for `db.type="sql"`, `"SELECT * FROM wuser_table"`; for `db.type="redis"`, `"SET mykey 'WuValue'"`. |
 | `db.type` | string | Database type. For any SQL database, `"sql"`. For others, the lower-case database category, e.g. `"cassandra"`, `"hbase"`, or `"redis"`. |
 | `db.user` | string | Username for accessing database. E.g., `"readonly_user"` or `"reporting_user"` |
@@ -70,7 +71,7 @@ The following Span tags combine to model message bus based communications:
 
 The following Span tags combine to model database calls:
 
-- `db.type`, `db.instance`, `db.user`, and `db.statement`: as described in the table above
+- `db.type`, `db.instance`, `db.collection`, `db.user`, and `db.statement`: as described in the table above
 - `peer.address`, `peer.hostname`, `peer.ipv4`, `peer.ipv6`, `peer.port`, `peer.service`: optional tags that describe the database peer
 - `span.kind`: `"client"`
 
