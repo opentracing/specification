@@ -54,7 +54,7 @@ The method names `ToTraceID` and `ToSpanID` were chosen over `TraceID` and `Span
 ## Future Formats
 In some cases, additional identifier formats may be added, besides `string`. Two reasons for additional formats were identified:
 
-1) Avoiding double converstions. Rather than converting from a native format to a string value, and then directly into another format, an additional method could be added to allow the tracer to do the conversion directly. For example, using identifiers as byte arrays may turn out to be popular, and may incur an extra conversion cost from string.
+1) Avoiding double conversions. Rather than converting from a native format to a string value, and then directly into another format, an additional method could be added to allow the tracer to do the conversion directly. For example, using identifiers as byte arrays may turn out to be popular, and may incur an extra conversion cost from string.
 2) If tracing systems converge on a common trace propagation format, such as [Trace-Context](https://github.com/w3c/trace-context), accessors may be added for that format as well.
 
 ## Backwards Compatibility and Optional Support
@@ -65,7 +65,7 @@ The OpenTracing specification does not currently require trace and span identifi
 ## Log Correlation
 The primary expected consumer for Trace-Context identifiers are logging systems which run independently from the tracing system. 
 
-Log indexing has become a common practice, often by including a request identifier in the log. In the past, this has involved manually propagating these identifiers as headers. However, systems which using OpenTracing automatically propagate these identifiers via the Inject/Extract interface. Some of these identifiers are user-generated, and contained in Baggage. However, the most relevant identifiers for log indexing are the Trace and Span IDs. Therefore, exposing these values would be immensley valuable.
+Log indexing has become a common practice, often by including a request identifier in the log. In the past, this has involved manually propagating these identifiers as headers. However, systems which using OpenTracing automatically propagate these identifiers via the Inject/Extract interface. Some of these identifiers are user-generated, and contained in Baggage. However, the most relevant identifiers for log indexing are the Trace and Span IDs. Therefore, exposing these values would be immensely valuable.
 
 ## Trace Observers
 The OpenTracing community would like to develop secondary observation systems which utilize the tracing runtime, but are tracer independent. Trace and span identifiers would allow these observers to correlate tracing data without having knowledge of the wire protocol or tracing implemnetation. Examples include:
