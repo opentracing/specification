@@ -14,7 +14,7 @@ The OpenTracing specification uses a `Major.Minor` version number but has no `.P
 
 OpenTracing's core specification (i.e., this document) is intentionally agnostic about the specifics of particular downstream tracing or monitoring systems. This is because **OpenTracing exists to describe the semantics of transactions in distributed systems.** Describing those transactions should not be influenced by how — or how not — any particular backend likes to process or represent data. For instance, detailed OpenTracing instrumentation can be used to simply measure latencies and apply tags in a timeseries monitoring system (e.g., Prometheus); or Span start+finish times along with Span logs may be redirected to a central logging service (e.g., Kibana).
 
-As such, the OpenTracing specification and [data modelling conventions](./data_conventions.md) have a wider scope than some tracing systems, "and that's okay." If certain semantic behavior is out-of-scope for a particular tracing or monitoring system, said system can summarize or simply ignore the respective data flowing from OpenTracing instrumentation.
+As such, the OpenTracing specification and [data modeling conventions](./data_conventions.md) have a wider scope than some tracing systems, "and that's okay." If certain semantic behavior is out-of-scope for a particular tracing or monitoring system, said system can summarize or simply ignore the respective data flowing from OpenTracing instrumentation.
 
 ## The OpenTracing Data Model
 
