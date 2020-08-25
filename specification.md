@@ -106,7 +106,7 @@ These could all be valid timing diagrams for children that are the `ChildOf` a p
 
 **`FollowsFrom` references:** Some parent Spans do not depend in any way on the result of their child Spans. In these cases, we say merely that the child Span `FollowsFrom` the parent Span in a causal sense. There are many distinct `FollowsFrom` reference sub-categories, and in future versions of OpenTracing they may be distinguished more formally.
 
-These can all be valid timing diagrams for children that "FollowFrom" a parent.
+These can all be valid timing diagrams for children that "FollowsFrom" a parent.
 
 ~~~
     [-Parent Span-]  [-Child Span-]
